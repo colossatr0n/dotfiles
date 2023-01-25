@@ -49,67 +49,6 @@
                         ]
                     },
                     {
-                        "description": "Vim insert control emulation",
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "trigger key pressed",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    },
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.apple\\.Terminal"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "description": "Caps Lock + w to ctrl + w",
-                                "from": {
-                                    "key_code": "w"
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "w",
-                                        "modifiers": [
-                                            "control"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "trigger key pressed",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    },
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.apple\\.Terminal"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
-                                "description": "Caps Lock + w to alt + backspace (outside vim)",
-                                "from": {
-                                    "key_code": "w"
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "delete_or_backspace",
-                                        "modifiers": [
-                                            "option"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "Move left or right a space with s or d",
                         "manipulators": [
                             {

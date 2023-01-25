@@ -45,6 +45,15 @@ doo-a-a-a-ood
 
 See https://vi.stackexchange.com/questions/20704/how-to-run-a-substitute-command-on-only-a-certain-part-of-the-line/20706#20706
 
+# Global Commands
+Global commands start with `:g` and are followed by a regexp and then a command: `:g/regexp/cmd`
+
+## Yank all lines matching a pattern
+1. Clear register that you want to yank in to: `qaq`.
+2. Then yank using: `:g/regex/y A`.
+  1. Register must be capitalized. This means to append rather than rewrite to register `a`.
+3. Paste using: `"ap`.
+
 
 # Terminal Commands
 ## jq
@@ -83,3 +92,13 @@ Ensure that the register is capitalized, as this indicates to vim that it should
 ## Delete all matching lines
 1. Clear register: `qaq`
 2. Issue global command: `g/\v.*\[".+"\]/d A` 
+
+# Reordering lines
+This works on up to 9 lines.
+
+1. Move the cursor to "line 1" and type `dd` to delete the line. Go to "line 2" and press `.` to repeat (delete another line. 
+2. Repeat this on "line 3", and so on, until everything has been deleted in order.
+3. Now type "1P to paste the contents of register 1 before the cursor.
+4. Repeat with the dot command, eight times.
+
+NOTE: This doesn't work in IntelliJ.
