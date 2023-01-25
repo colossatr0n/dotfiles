@@ -68,3 +68,13 @@ Go to file using `gf`. To go to a file path that uses spaces instead of escaped 
 # Viewing
 # View Mappings
 Use `:map` to view custom mappings.
+
+# Reordering lines
+This works on up to 9 lines.
+
+1. Move the cursor to "line 1" and type `dd` to delete the line. Go to "line 2" and press `.` to repeat (delete another line. 
+2. Repeat this on "line 3", and so on, until everything has been deleted in order.
+3. Now type "1P to paste the contents of register 1 before the cursor.
+4. Repeat with the dot command, eight times.
+
+NOTE: This doesn't work in IntelliJ.
