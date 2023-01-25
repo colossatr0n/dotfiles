@@ -466,6 +466,89 @@
                 "type": "basic"
             }
         ]
+    },
+    {
+        "description": "Caps Lock as Escape or Trigger key if held",
+        "manipulators": [
+            {
+                "description": "Sets caps lock as trigger key with no other effects.",
+                "from": {
+                    "key_code": "caps_lock",
+                    "modifiers": {
+                        "optional": [
+                            "any"
+                        ]
+                    }
+                },
+                "to_if_alone": {
+                    "key_code": "escape"
+                },
+                "to_if_held_down": [
+                    {
+                        "set_variable": {
+                            "name": "trigger key pressed",
+                            "value": 1
+                        }
+                    }
+                ],
+                "to_after_key_up": [
+                    {
+                        "set_variable": {
+                            "name": "trigger key pressed",
+                            "value": 0
+                        }
+                    }
+                ],
+                "parameters": {
+                    "basic.to_if_held_down_threshold_milliseconds": 20
+                  },
+                "type": "basic"
+            },
+            {
+                "description": "Move left a space",   
+                "from": {
+                    "key_code": "s"
+                },
+                "to": [
+                    {
+                        "key_code": "left_arrow",
+                        "modifiers": [
+                            "control"
+                        ]
+                    }
+                ],
+                "conditions": [
+                    {
+                        "name": "trigger key pressed",
+                        "type": "variable_if",
+                        "value": 1
+                    }
+                ],
+                "type": "basic"
+            },
+            {
+                "description": "Move right a space",   
+                "from": {
+                    "key_code": "d"
+                },
+                "to": [
+                    {
+                        "key_code": "right_arrow",
+                        "modifiers": [
+                            "control"
+                        ]
+                    }
+                ],
+                "conditions": [
+                    {
+                        "name": "trigger key pressed",
+                        "type": "variable_if",
+                        "value": 1
+                    }
+                ],
+                "type": "basic"
+            }
+        ]
     }
 ]
 }
