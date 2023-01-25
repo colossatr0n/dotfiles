@@ -1,4 +1,4 @@
-# How to find uniqe entires in vim
+# How to find uniqe entries in vim
 Save both buffers to some tmp file.
 
 ```

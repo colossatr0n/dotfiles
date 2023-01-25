@@ -5,6 +5,7 @@ set ignorecase
 set smartcase
 set history=10000
 set relativenumber
+let g:markdown_fenced_languages = ['json']
 
 nnoremap <leader>f <C-^>
 
