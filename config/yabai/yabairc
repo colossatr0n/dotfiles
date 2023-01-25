@@ -35,7 +35,7 @@ yabai -m rule --add app="^System Preferences$" manage=off
 yabai -m rule --add app="^IntelliJ IDEA$" manage=off
 yabai -m rule --add title="Preferences" manage=off
 
-if [ $USER !== 'Thack' ]; then
+if [[ $USER == 'tarchuletta' ]]; then
     echo "Using work profile."
     yabai -m signal --add \
 	event=application_activated \

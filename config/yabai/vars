@@ -1,18 +1,18 @@
 #!/usr/bin/env sh
 
-# Set workstation dependent variables                                                                                                                                           
-if [ $USER == 'Thack' ]; then
+# Set workstation dependent variables
+if [[ $USER == 'Thack' ]]; then
    YABAI_LEFT_DISP=3
    YABAI_MID_DISP=1
    YABAI_RIGHT_DISP=2
 
    # Not using the WORKSTATION var yet, but leaving it here if I decide to.
    WORKSTATION=home
-else
+elif [[ $USER == 'tarchuletta' ]]; then
    YABAI_LEFT_DISP=2
    YABAI_MID_DISP=1
    YABAI_RIGHT_DISP=3
-   
+
    WORKSTATION=work
 fi
 
