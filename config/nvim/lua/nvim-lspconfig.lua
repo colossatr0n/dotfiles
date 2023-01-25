@@ -1,6 +1,8 @@
 local nvim_lsp = require('lspconfig')
 local HOME = os.getenv("HOME")
 vim.cmd('source ~/dotfiles/config/nvim/vimscript/lsp-keybindings.vim')
+-- Even if cmp isn't directly used, it's needed to load the config.
+local cmp = require('nvim-cmp')
 
 -- SET UP KEYBINDINGS
 -- Use an on_attach function to only map the following keys
@@ -45,6 +47,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
         virtual_text = false
     }
 )
+
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches. Also add autocompletions.
