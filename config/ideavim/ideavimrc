@@ -7,7 +7,6 @@ source ~/dotfiles/config/nvim/vimscript/nerdtree.vim
 set commentary
 set highlightedyank
 set matchit
-set sneak
 set smartcase
 
 " Uses LSP keybindings.
