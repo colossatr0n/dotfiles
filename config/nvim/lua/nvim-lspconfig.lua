@@ -62,6 +62,7 @@ local servers = {
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
+    single_file_support = true,
     flags = {
       debounce_text_changes = 150,
     },
