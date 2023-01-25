@@ -124,6 +124,23 @@ swaphosts() {
 hostentry() {
     egrep "$1" /etc/hosts | while read -r entry; do echo -n $entry | tee /dev/tty | tr -s ' ' |  cut -d ' ' -f 1 | cut -d \# -f 2  | nslookup | egrep 'name' | cut -d = -f 2 | tr ' ' \\t; done
 }
+
+resetroute() {
+    echo "FLusing routes...";
+    for i in $(ifconfig | egrep -o "^[a-z].+\d{1}:" | sed 's/://');
+    do 
+        echo "Taking down $i"
+        sudo ifconfig "$i" down;
+    done;
+
+    sudo route -n flush;
+    for i in $(ifconfig | egrep -o "^[a-z].+\d{1}:" | sed 's/://');
+    do
+        echo "Starting up $i"
+        sudo ifconfig "$i" up;
+    done
+}
+
 # Notes
 # Replace newlines with comma
 # "some string with newlines" | tr \\n ,
@@ -133,3 +150,9 @@ hostentry() {
 
 #Set up environment variables
 source ~/dotfiles/config/yabai/vars
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/tarchuletta/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/tarchuletta/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/tarchuletta/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/tarchuletta/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
