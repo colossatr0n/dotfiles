@@ -33,5 +33,6 @@ call plug#begin('~/dotfiles/config/nvim/autoload/plugged')
     Plug 'sbdchd/neoformat'
     Plug 'machakann/vim-highlightedyank'
     Plug 'justinmk/vim-sneak'
+    Plug 'szw/vim-maximizer'
 
 call plug#end()

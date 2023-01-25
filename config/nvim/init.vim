@@ -3,7 +3,7 @@ source $HOME/dotfiles/config/vim/vimrc
 set tabstop=4
 set shiftwidth=4
 set expandtab
-set mouse=r
+set mouse=a
 
 set rtp+=/usr/local/opt/fzf
 
@@ -23,6 +23,7 @@ nnoremap <leader>w <c-w><c-p>
 source $HOME/dotfiles/config/nvim/vim-plug/plugins.vim
 source $HOME/dotfiles/config/nvim/vimscript/vim-sneak.vim
 source $HOME/dotfiles/config/nvim/vimscript/nerdtree.vim
+source $HOME/dotfiles/config/nvim/vimscript/vim-maximizer.vim
 lua require('nvim-lspconfig')
 lua require('nvim-lspsaga')
 lua require('nvim-toggleterm')
@@ -38,3 +39,14 @@ hi! link GitGutterAdd GitAddStripe
 hi! link GitGutterChange GitChangeStripe
 hi! link GitGutterDelete GitDeleteStripe
 let g:gitgutter_sign_removed = '▶'
+
+function! OpenURLUnderCursor()
+  let s:uri = expand('<cWORD>')
+  let s:uri = substitute(s:uri, '?', '\\?', '')
+  let s:uri = shellescape(s:uri, 1)
+  if s:uri != ''
+    silent exec "!open '".s:uri."'"
+    :redraw!
+  endif
+endfunction
+nnoremap gx :call OpenURLUnderCursor()<CR>
