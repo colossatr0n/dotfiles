@@ -1,5 +1,5 @@
 {
-"title": "ViModeCapsLock",
+"title": "Caps Lock Trigger Modifications",
 "rules": [
     {
         "description": "Vi Mode [Caps Lock as Trigger Key]",
@@ -473,17 +473,9 @@
             {
                 "description": "Sets caps lock as trigger key with no other effects.",
                 "from": {
-                    "key_code": "caps_lock",
-                    "modifiers": {
-                        "optional": [
-                            "any"
-                        ]
-                    }
+                    "key_code": "caps_lock"       
                 },
-                "to_if_alone": {
-                    "key_code": "escape"
-                },
-                "to_if_held_down": [
+                "to": [
                     {
                         "set_variable": {
                             "name": "trigger key pressed",
@@ -499,11 +491,16 @@
                         }
                     }
                 ],
-                "parameters": {
-                    "basic.to_if_held_down_threshold_milliseconds": 20
-                  },
+                "to_if_alone": [
+                    { "key_code": "escape"}
+                ],
                 "type": "basic"
-            },
+            }
+        ]
+    },
+    {
+        "description": "Move left or right a space with s or d",
+        "manipulators": [
             {
                 "description": "Move left a space",   
                 "from": {
@@ -534,6 +531,33 @@
                 "to": [
                     {
                         "key_code": "right_arrow",
+                        "modifiers": [
+                            "control"
+                        ]
+                    }
+                ],
+                "conditions": [
+                    {
+                        "name": "trigger key pressed",
+                        "type": "variable_if",
+                        "value": 1
+                    }
+                ],
+                "type": "basic"
+            }
+        ]
+    },
+    {
+        "description": "Vim insert control emulation",
+        "manipulators": [
+            {
+                "description": "Caps Lock + w to ctrl + w",   
+                "from": {
+                    "key_code": "w"
+                },
+                "to": [
+                    {
+                        "key_code": "w",
                         "modifiers": [
                             "control"
                         ]
