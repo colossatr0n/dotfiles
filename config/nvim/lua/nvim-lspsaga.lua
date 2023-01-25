@@ -41,6 +41,3 @@ saga.init_lsp_saga {
 
 -- or --use default config
 --saga.init_lsp_saga()
-
-vim.api.nvim_set_keymap('n', '<A-d>', '<cmd>lua require("lspsaga.floaterm").open_float_terminal()<CR>', { noremap=true, silent=true })
-vim.api.nvim_set_keymap('t', '<A-d>', '<C-\\><C-n>:lua require("lspsaga.floaterm").close_float_terminal()<CR>', { noremap=true, silent=true })

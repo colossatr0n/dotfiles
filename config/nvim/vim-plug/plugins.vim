@@ -26,5 +26,7 @@ call plug#begin('~/dotfiles/config/nvim/autoload/plugged')
     Plug 'L3MON4D3/LuaSnip' " Snippets plugin
     Plug 'glepnir/lspsaga.nvim'
     Plug 'preservim/nerdtree'
+    Plug 'akinsho/toggleterm.nvim'
+    Plug 'jremmen/vim-ripgrep'
 
 call plug#end()

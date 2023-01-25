@@ -2,10 +2,13 @@ source $HOME/dotfiles/config/vim/vimrc
 source $HOME/dotfiles/config/nvim/vim-plug/plugins.vim
 lua require('nvim-lspconfig')
 lua require('nvim-lspsaga')
+lua require('nvim-toggleterm')
+lua require('nvim-ripgrep')
 
 set number
 set updatetime=100
 let mapleader=","
+set hidden
 
 " let g:netrw_banner = 0
 " let g:netrw_liststyle = 3
