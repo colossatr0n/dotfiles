@@ -1,3 +1,12 @@
+# How to find uniqe entires in vim
+Save both buffers to some tmp file.
+
+```
+comm -13 <(sort -u /tmp/a) <(sort -u /tmp/b)    
+```
+
+This will tell you which things are unique to the second file (things that the first file doesn't contain.
+
 # Regex
 ## Non-greedy Quantifier
 Use `.\{-}` in place of `.*?`.
