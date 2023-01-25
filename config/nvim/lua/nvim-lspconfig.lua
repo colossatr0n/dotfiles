@@ -18,24 +18,23 @@ local on_attach = function(client, bufnr)
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_set_keymap('n', vim.g.lsp_keybindings['goToDeclaration'],           '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', vim.g.lsp_keybindings['goToDefinition'],            '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', vim.g.lsp_keybindings['previewDefinition'],         '<cmd>lua require("lspsaga.provider").preview_definition()<CR>', opts)
-  buf_set_keymap('n', vim.g.lsp_keybindings['hoverDoc'],                  '<cmd>lua require("lspsaga.hover").render_hover_doc()<CR>', opts)
-  buf_set_keymap('n', vim.g.lsp_keybindings['scrollUpPreviewWindow'],     '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(1)<CR>', opts)
-  buf_set_keymap('n', vim.g.lsp_keybindings['scrollDownPreviewWindow'],   '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(-1)<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['previewDefinition'],         '<cmd>Lspsaga peek_definition<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['hoverDoc'],                  '<cmd>Lspsaga hover_doc<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['finder'],                    '<cmd>Lspsaga lsp_finder<CR>', opts)
   buf_set_keymap('n', vim.g.lsp_keybindings['goToImplementation'],        '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', vim.g.lsp_keybindings['signatureHelp'],             '<cmd>lua require("lspsaga.signaturehelp").signature_help()<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['signatureHelp'],             '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap('n', vim.g.lsp_keybindings['addWorkspaceFolder'],        '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   buf_set_keymap('n', vim.g.lsp_keybindings['removeWorkspaceFolder'],     '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   buf_set_keymap('n', vim.g.lsp_keybindings['showWorkspaceFolders'],      '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   buf_set_keymap('n', vim.g.lsp_keybindings['goToTypeDefinition'],        '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', vim.g.lsp_keybindings['rename'],                    '<cmd>lua require("lspsaga.rename").rename()<CR>', opts)
-  buf_set_keymap('n', vim.g.lsp_keybindings['codeAction'],                '<cmd>lua require("lspsaga.codeaction").code_action()<CR>', opts)
-  buf_set_keymap('n', vim.g.lsp_keybindings['references'],                '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['rename'],                    '<cmd>Lspsaga rename<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['codeAction'],                '<cmd>Lspsaga code_action<CR>', opts)
+  -- buf_set_keymap('n', vim.g.lsp_keybindings['references'],                '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', vim.g.lsp_keybindings['showErrorDescription'],      '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  buf_set_keymap('n', vim.g.lsp_keybindings['goToPreviousDiagnostic'],    '<cmd>lua require"lspsaga.diagnostic".lsp_jump_diagnostic_prev()<CR>', opts)
-  buf_set_keymap('n', vim.g.lsp_keybindings['goToNextDiagnostic'],        '<cmd>lua require"lspsaga.diagnostic".lsp_jump_diagnostic_next()<CR>', opts)
-  buf_set_keymap('n', vim.g.lsp_keybindings['goToPreviousError'],         '<cmd>lua require"lspsaga.diagnostic".lsp_jump_diagnostic_prev({ severity = "Error" })<CR>', opts)
-  buf_set_keymap('n', vim.g.lsp_keybindings['goToNextError'],             '<cmd>lua require"lspsaga.diagnostic".lsp_jump_diagnostic_next({ severity = "Error" })<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['goToPreviousDiagnostic'],    '<cmd>Lspsaga diagnostic_jump_prev<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['goToNextDiagnostic'],        '<cmd>Lspsaga diagnostic_jump_next<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['goToPreviousError'],         '<cmd>lua require("lspsaga.diagnostic").goto_prev({ severity = "Error" })<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['goToNextError'],             '<cmd>lua require("lspsaga.diagnostic").goto_next({ severity = "Error" })<CR>', opts)
   buf_set_keymap('n', vim.g.lsp_keybindings['showErrorWindow'],           '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap('n', vim.g.lsp_keybindings['reformat'],                  '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 
@@ -66,7 +65,7 @@ for _, lsp in ipairs(servers) do
     flags = {
       debounce_text_changes = 150,
     },
-    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+    capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
   }
 end
 
@@ -78,7 +77,7 @@ nvim_lsp['sourcekit'].setup {
     flags = {
       debounce_text_changes = 150,
     },
-    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+    capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 }
 
 -- Not able to add java the normal way
@@ -89,7 +88,7 @@ nvim_lsp['java_language_server'].setup {
     flags = {
       debounce_text_changes = 150,
     },
-    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+    capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 }
 
 nvim_lsp['clangd'].setup {
@@ -99,7 +98,7 @@ nvim_lsp['clangd'].setup {
     flags = {
       debounce_text_changes = 150,
     },
-    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+    capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 }
 
 --Enable (broadcasting) snippet capability for completion
