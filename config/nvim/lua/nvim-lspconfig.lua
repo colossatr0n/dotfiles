@@ -36,7 +36,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', vim.g.lsp_keybindings['goToPreviousError'],         '<cmd>lua require("lspsaga.diagnostic").goto_prev({ severity = "Error" })<CR>', opts)
   buf_set_keymap('n', vim.g.lsp_keybindings['goToNextError'],             '<cmd>lua require("lspsaga.diagnostic").goto_next({ severity = "Error" })<CR>', opts)
   buf_set_keymap('n', vim.g.lsp_keybindings['showErrorWindow'],           '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap('n', vim.g.lsp_keybindings['reformat'],                  '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['reformat'],                  '<cmd>lua vim.lsp.buf.format({ async = true })<CR>', opts)
 
 end
 
@@ -54,7 +54,7 @@ local servers = {
     'html',
     'vuels',
     'bashls',
-    'pylsp' -- pip3 install python-lsp-server
+    'pylsp' -- pip3 install python-lsp-server && pip3 install "python-lsp-server[yapf]
 }
 
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -63,6 +63,7 @@ local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.pr
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
+    single_file_support = true,
     flags = {
       debounce_text_changes = 150,
     },
