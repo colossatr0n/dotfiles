@@ -7,10 +7,10 @@ fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=${PATH}:/Users/tarchuletta/Library/Python/3.7/bin
+export PATH=${PATH}:/Users/${USER}/Library/Python/3.7/bin
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/tarchuletta/.oh-my-zsh"
+export ZSH="/Users/${USER}/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
