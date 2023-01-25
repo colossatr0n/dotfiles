@@ -9,18 +9,16 @@ let lsp_keybindings = {
             \ 'goToTypeDefinition'     : '<leader>t',
             \ 'rename'                 : '<leader>rn',
             \ 'codeAction'             : '<leader>a',
-            \ 'references'             : '<leader>u',
+            \ 'finder'                 : '<leader>u',
             \
             \ 'showErrorDescription'   : '<leader>e',
-            \ 'hoverDoc'               : 'K',
+            \ 'hoverDoc'               : '<leader>hd',
             \ 'goToNextDiagnostic'     : ']d',
             \ 'goToPreviousDiagnostic' : '[d',
             \ 'goToNextError'          : ']e',
             \ 'goToPreviousError'      : '[e',
             \
             \ 'showErrorWindow'        : '<leader>lv',
-            \ 'scrollUpPreviewWindow'  : '<C-f>',
-            \ 'scrollDownPreviewWindow': '<C-b>',
             \
             \ 'addWorkspaceFolder'     : '<leader>wa',
             \ 'removeWorkspaceFolder'  : '<leader>wr',
@@ -30,4 +28,5 @@ let lsp_keybindings = {
 " Set to global so that lua scripts can access it (vim.g.someGlobalVar)
 let g:lsp_keybindings = lsp_keybindings
 
-
+" Unused key pairs
+" \ 'references'             : '<leader>u',

@@ -25,7 +25,7 @@ call plug#begin('~/dotfiles/config/nvim/autoload/plugged')
     Plug 'hrsh7th/cmp-nvim-lsp' " LSP source for nvim-cmp
     Plug 'saadparwaiz1/cmp_luasnip' " Snippets source for nvim-cmp
     Plug 'L3MON4D3/LuaSnip' " Snippets plugin
-    Plug 'glepnir/lspsaga.nvim'
+    Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
     Plug 'preservim/nerdtree'
     Plug 'akinsho/toggleterm.nvim'
     Plug 'jremmen/vim-ripgrep'
