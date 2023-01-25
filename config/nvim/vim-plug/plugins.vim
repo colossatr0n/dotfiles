@@ -18,5 +18,12 @@ call plug#begin('~/dotfiles/config/nvim/autoload/plugged')
     Plug 'doums/darcula'
     Plug 'itchyny/lightline.vim'
     Plug 'airblade/vim-gitgutter'
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'hrsh7th/nvim-cmp' " Autocompletion plugin
+    Plug 'hrsh7th/cmp-nvim-lsp' " LSP source for nvim-cmp
+    Plug 'saadparwaiz1/cmp_luasnip' " Snippets source for nvim-cmp
+    Plug 'L3MON4D3/LuaSnip' " Snippets plugin
+    Plug 'glepnir/lspsaga.nvim'
 
 call plug#end()

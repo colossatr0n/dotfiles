@@ -1,5 +1,7 @@
 source $HOME/dotfiles/config/vim/vimrc
 source $HOME/dotfiles/config/nvim/vim-plug/plugins.vim
+lua require('nvim-lspconfig')
+lua require('nvim-lspsaga')
 
 set number
 set updatetime=100
@@ -13,4 +15,3 @@ hi! link GitGutterAdd GitAddStripe
 hi! link GitGutterChange GitChangeStripe
 hi! link GitGutterDelete GitDeleteStripe
 let g:gitgutter_sign_removed = '▶'
-

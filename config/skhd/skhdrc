@@ -11,8 +11,8 @@ alt - 0x2B : yabai -m display --focus $YABAI_MID_DISP;
 alt - 0x2F : yabai -m display --focus $YABAI_RIGHT_DISPLAY;
 
 # Navigation (spaces)
-alt - s: skhd --key "ctrl - left"
-alt - d: skhd --key "ctrl - right"
+#alt - s: skhd --key "ctrl - left"
+#alt - d: skhd --key "ctrl - right"
 
 # Moving windows (focused display)
 shift + alt - h : yabai -m window --warp west
