@@ -50,7 +50,8 @@ local cmp = require('nvim-cmp')
 local servers = { 
     'tsserver', 
     'angularls',
-    'html'
+    'html',
+    'vuels'
 }
 
 for _, lsp in ipairs(servers) do
@@ -71,6 +72,14 @@ nvim_lsp['sourcekit'].setup {
       debounce_text_changes = 150,
     },
     capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+}
+
+--Enable (broadcasting) snippet capability for completion
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+require'lspconfig'.cssls.setup {
+  capabilities = capabilities,
 }
 
 -- NPM installs for language servers
