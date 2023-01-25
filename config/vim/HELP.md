@@ -106,3 +106,8 @@ NOTE: This doesn't work in IntelliJ.
 # Diff Windows
 `:windo diffthis` will diff all windows. `:windo` performs the operation on all windows.
 To turn it off, use `:diffoff!`. `!` applies it to al windows.
+
+# Only replace within visual selection on a line
+Use `%V`.
+
+`:'<,'>s/\%V /_/g`

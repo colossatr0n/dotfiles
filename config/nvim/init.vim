@@ -4,6 +4,9 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set mouse=a
+set shiftround " smart indentation
+set linebreak " wrap line on end of word
+set nolist " don't display whitespace character as text
 
 set rtp+=/usr/local/opt/fzf
 
