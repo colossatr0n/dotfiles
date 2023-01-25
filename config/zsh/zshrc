@@ -1,17 +1,21 @@
+########################################
+# POWERLEVEL 10K
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
+########################################
+# OH MY ZSH SETUP
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=${PATH}:/Users/${USER}/Library/Python/3.7/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/${USER}/.oh-my-zsh"
-
+########################################
+# THEMES
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -24,7 +28,8 @@ POWERLEVEL10K_MODE="nerdfont-complete"
 # a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
+########################################
+# OH MY ZSH CONFIGURATIONS
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -71,7 +76,8 @@ POWERLEVEL10K_MODE="nerdfont-complete"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
-
+########################################
+# PLUGINS
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
@@ -84,75 +90,26 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-alias localapps='egrep "^127" /etc/hosts'
-alias shift='~/code/pycharm/shift/shift.py &'
-alias kill8084='lsof -t -i tcp:8084 | xargs kill'
-alias getup='~/getup.sh &'
-alias shutup='pkill -f getup.sh' 
-
-swaphosts() {
-    cat "$1" | sudo tee /etc/hosts > /dev/null
-}
-
-hostentry() {
-    egrep "$1" /etc/hosts | while read -r entry; do echo -n $entry | tee /dev/tty | tr -s ' ' |  cut -d ' ' -f 1 | cut -d \# -f 2  | nslookup | egrep 'name' | cut -d = -f 2 | tr ' ' \\t; done
-}
-
-resetroute() {
-    echo "FLusing routes...";
-    for i in $(ifconfig | egrep -o "^[a-z].+\d{1}:" | sed 's/://');
-    do 
-        echo "Taking down $i"
-        sudo ifconfig "$i" down;
-    done;
-
-    sudo route -n flush;
-    for i in $(ifconfig | egrep -o "^[a-z].+\d{1}:" | sed 's/://');
-    do
-        echo "Starting up $i"
-        sudo ifconfig "$i" up;
-    done
-}
-
-# Notes
-# Replace newlines with comma
-# "some string with newlines" | tr \\n ,
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+###################BEGIN USER CONFIGURATION#####################
+# NOTES
+
+# Replace newlines with comma
+# "some string with newlines" | tr \\n ,
+
+########################################
+# ENVIRONMENT VARIABLES
 #Set up environment variables
 source ~/dotfiles/config/yabai/vars
-
+########################################
+# LOCAL CONFIGURATIONS (NON-SHARED)
 # Set up local configurations that shouldn't be shared across machines
 source ~/.zshrc.local
-
+########################################
+# CONSOLE BINDINGS
 # Set terminal shortcuts to behave like vi
 set -o vi
+########################################
 
