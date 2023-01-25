@@ -31,5 +31,6 @@ call plug#begin('~/dotfiles/config/nvim/autoload/plugged')
     Plug 'jremmen/vim-ripgrep'
     Plug 'tpope/vim-commentary'
     Plug 'sbdchd/neoformat'
+    Plug 'machakann/vim-highlightedyank'
 
 call plug#end()

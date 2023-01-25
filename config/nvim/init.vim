@@ -10,6 +10,7 @@ set number
 set updatetime=100
 let mapleader=","
 set hidden
+set inccommand=split
 
 augroup ProjectDrawer
   autocmd!
