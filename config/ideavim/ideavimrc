@@ -37,6 +37,8 @@ nmap g, <Action>(JumpToNextChange)
 " These should match git gutter bindings
 nmap [c <Action>(VcsShowPrevChangeMarker)
 nmap ]c <Action>(VcsShowNextChangeMarker)
+nmap <leader>hu <Action>(Vcs.RollbackChangedLines)
+nmap <leader>hp <Action>(VcsShowCurrentChangeMarker)
 
 " IdeaVim Plugin Emulations.
 " NERDTree bindings set by nerdtree.vim file.
