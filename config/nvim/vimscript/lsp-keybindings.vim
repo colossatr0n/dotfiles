@@ -13,6 +13,8 @@ let lsp_keybindings = {
             \
             \ 'showErrorDescription'   : '<leader>e',
             \ 'hoverDoc'               : 'K',
+            \ 'goToNextDiagnostic'     : ']d',
+            \ 'goToPreviousDiagnostic' : '[d',
             \ 'goToNextError'          : ']e',
             \ 'goToPreviousError'      : '[e',
             \

@@ -32,8 +32,10 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', vim.g.lsp_keybindings['codeAction'],                '<cmd>lua require("lspsaga.codeaction").code_action()<CR>', opts)
   buf_set_keymap('n', vim.g.lsp_keybindings['references'],                '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', vim.g.lsp_keybindings['showErrorDescription'],      '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  buf_set_keymap('n', vim.g.lsp_keybindings['goToPreviousError'],         '<cmd>lua require"lspsaga.diagnostic".lsp_jump_diagnostic_prev()<CR>', opts)
-  buf_set_keymap('n', vim.g.lsp_keybindings['goToNextError'],             '<cmd>lua require"lspsaga.diagnostic".lsp_jump_diagnostic_next()<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['goToPreviousDiagnostic'],    '<cmd>lua require"lspsaga.diagnostic".lsp_jump_diagnostic_prev()<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['goToNextDiagnostic'],        '<cmd>lua require"lspsaga.diagnostic".lsp_jump_diagnostic_next()<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['goToPreviousError'],         '<cmd>lua require"lspsaga.diagnostic".lsp_jump_diagnostic_prev({ severity = "Error" })<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['goToNextError'],             '<cmd>lua require"lspsaga.diagnostic".lsp_jump_diagnostic_next({ severity = "Error" })<CR>', opts)
   buf_set_keymap('n', vim.g.lsp_keybindings['showErrorWindow'],           '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap('n', vim.g.lsp_keybindings['reformat'],                  '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 
@@ -71,7 +73,7 @@ end
 -- Not able to add swift/cpp stuff the normal way. Adding it manually.
 nvim_lsp['sourcekit'].setup {
     cmd = { "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp" },
-    filetypes = { "swift", "c",  "cpp", "objective-c", "objective-cpp", "objc" },
+    filetypes = { "swift", "objective-c", "objective-cpp", "objc" },
     on_attach = on_attach,
     flags = {
       debounce_text_changes = 150,
@@ -82,6 +84,16 @@ nvim_lsp['sourcekit'].setup {
 -- Not able to add java the normal way
 nvim_lsp['java_language_server'].setup {
     cmd = { HOME .. '/code/language-servers/java-language-server-master/dist/lang_server_mac.sh' },
+    on_attach = on_attach,
+    single_file_support = true,
+    flags = {
+      debounce_text_changes = 150,
+    },
+    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+}
+
+nvim_lsp['clangd'].setup {
+    cmd = { "/usr/local/opt/llvm/bin/clangd" },
     on_attach = on_attach,
     single_file_support = true,
     flags = {

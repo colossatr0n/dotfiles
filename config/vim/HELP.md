@@ -1,3 +1,10 @@
+# Search/Replace ALL
+```
+:Rg <search term>
+:cfdo %s/<search term>/<replace term>/gc
+:cdo update #(save all files)
+```
+
 # Regex
 ## Non-greedy Quantifier
 Use `.\{-}` in place of `.*?`.
