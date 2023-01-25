@@ -55,7 +55,7 @@ local servers = {
     'html',
     'vuels',
     'bashls',
-    'pylsp'
+    'pylsp' -- pip3 install python-lsp-server
 }
 
 for _, lsp in ipairs(servers) do
