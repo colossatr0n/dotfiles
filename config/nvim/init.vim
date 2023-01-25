@@ -16,7 +16,9 @@ source $HOME/dotfiles/config/nvim/vimscript/gitgutter.vim
 lua require('nvim-cmp')
 lua require('nvim-lspconfig')
 lua require('nvim-lspsaga')
+
 lua require('nvim-toggleterm')
 lua require('nvim-ripgrep')
 lua require('nvim-fzf')
+lua require('nvim-telescope')
 lua require('nvim-rose-pine')

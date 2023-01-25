@@ -32,13 +32,26 @@ call plug#begin('~/dotfiles/config/nvim/autoload/plugged')
     Plug 'VonHeikemen/lsp-zero.nvim'
     Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
 
+    " FZF
 	Plug '/usr/local/opt/fzf'
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
-    " Plug 'doums/darcula'
+
+    " Telescope
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
+    if executable('make')
+        Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+    elseif executable('cmake')
+        Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+    endif
+
     Plug 'itchyny/lightline.vim'
-    Plug 'airblade/vim-gitgutter'
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    
+    " GIT
+    Plug 'airblade/vim-gitgutter'
+
 
     Plug 'preservim/nerdtree'
     Plug 'akinsho/toggleterm.nvim'
@@ -49,6 +62,7 @@ call plug#begin('~/dotfiles/config/nvim/autoload/plugged')
     Plug 'justinmk/vim-sneak'
     Plug 'szw/vim-maximizer'
 
+    " Themes
     Plug 'rose-pine/neovim', {'as': 'rose-pine'}
 
 call plug#end()

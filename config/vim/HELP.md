@@ -46,7 +46,7 @@ Keep - me
 
 ## Replace all occurrences within a pattern
 Use something like `\=substitute(submatch(0), '_', ' ', 'g')`. 
-The definnition is `substitute({expression}, {pattern}, {replacement}, {flags})`
+The definition is `substitute({expression}, {pattern}, {replacement}, {flags})`
 
 In the replacement component we open with \=. This special operator tells Vim to treat everything that follows as an expression, evaluate it, and use the result as the replacement of the final matched text.
 
