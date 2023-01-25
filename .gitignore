@@ -2,3 +2,4 @@
 *~
 config/karabiner/automatic_backups/*
 **/plugged
+config/nvim/spell/*
