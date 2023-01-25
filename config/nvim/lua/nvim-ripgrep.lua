@@ -1,1 +1,3 @@
-let g:rg_command = 'rg --vimgrep -S'
+vim.cmd(
+    "let g:rg_command = 'rg --vimgrep -S'"
+)

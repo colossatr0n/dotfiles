@@ -14,6 +14,7 @@ autocmd VimEnter *
 call plug#begin('~/dotfiles/config/nvim/autoload/plugged')
 
 	Plug '/usr/local/opt/fzf'
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
     Plug 'doums/darcula'
     Plug 'itchyny/lightline.vim'
