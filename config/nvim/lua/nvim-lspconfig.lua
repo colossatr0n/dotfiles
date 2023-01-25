@@ -47,7 +47,8 @@ local cmp = require('nvim-cmp')
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches. Also add autocompletions.
-local servers = { 'tsserver' }
+local servers = { 'tsserver', 'angularls' }
+
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -60,3 +61,4 @@ end
 
 -- NPM installs for language servers
 -- npm install -g typescript typescript-language-server
+-- angular-language-server can be installed via npm install -g @angular/language-server.
