@@ -1,4 +1,6 @@
 local nvim_lsp = require('lspconfig')
+local HOME = os.getenv("HOME")
+vim.cmd('source ~/dotfiles/config/nvim/vimscript/lsp-keybindings.vim')
 
 -- SET UP KEYBINDINGS
 -- Use an on_attach function to only map the following keys
@@ -14,26 +16,26 @@ local on_attach = function(client, bufnr)
   local opts = { noremap=true, silent=true }
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'gpd', '<cmd>lua require("lspsaga.provider").preview_definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<cmd>lua require("lspsaga.hover").render_hover_doc()<CR>', opts)
-  buf_set_keymap('n', '<C-f>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(1)<CR>', opts)
-  buf_set_keymap('n', '<C-b>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(-1)<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', 'gs', '<cmd>lua require("lspsaga.signaturehelp").signature_help()<CR>', opts)
-  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<space>rn', '<cmd>lua require("lspsaga.rename").rename()<CR>', opts)
-  buf_set_keymap('n', '<space>ca', '<cmd>lua require("lspsaga.codeaction").code_action()<CR>', opts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  buf_set_keymap('n', '[e', '<cmd>lua require"lspsaga.diagnostic".lsp_jump_diagnostic_prev()<CR>', opts)
-  buf_set_keymap('n', ']e', '<cmd>lua require"lspsaga.diagnostic".lsp_jump_diagnostic_next()<CR>', opts)
-  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['goToDeclaration'],           '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['goToDefinition'],            '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['previewDefinition'],         '<cmd>lua require("lspsaga.provider").preview_definition()<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['hoverDoc'],                  '<cmd>lua require("lspsaga.hover").render_hover_doc()<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['scrollUpPreviewWindow'],     '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(1)<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['scrollDownPreviewWindow'],   '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(-1)<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['goToImplementation'],        '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['signatureHelp'],             '<cmd>lua require("lspsaga.signaturehelp").signature_help()<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['addWorkspaceFolder'],        '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['removeWorkspaceFolder'],     '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['showWorkspaceFolders'],      '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['goToTypeDefinition'],        '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['rename'],                    '<cmd>lua require("lspsaga.rename").rename()<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['codeAction'],                '<cmd>lua require("lspsaga.codeaction").code_action()<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['references'],                '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['showErrorDescription'],      '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['goToPreviousError'],         '<cmd>lua require"lspsaga.diagnostic".lsp_jump_diagnostic_prev()<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['goToNextError'],             '<cmd>lua require"lspsaga.diagnostic".lsp_jump_diagnostic_next()<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['showErrorWindow'],           '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['reformat'],                  '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 
 end
 
@@ -71,6 +73,17 @@ nvim_lsp['sourcekit'].setup {
     cmd = { "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp" },
     filetypes = { "swift", "c",  "cpp", "objective-c", "objective-cpp", "objc" },
     on_attach = on_attach,
+    flags = {
+      debounce_text_changes = 150,
+    },
+    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+}
+
+-- Not able to add java the normal way
+nvim_lsp['java_language_server'].setup {
+    cmd = { HOME .. '/code/language-servers/java-language-server-master/dist/lang_server_mac.sh' },
+    on_attach = on_attach,
+    single_file_support = true,
     flags = {
       debounce_text_changes = 150,
     },

@@ -1,0 +1,47 @@
+source ~/dotfiles/config/vim/vimrc
+source ~/dotfiles/config/nvim/vimscript/lsp-keybindings.vim
+
+set NERDTree
+source ~/dotfiles/config/nvim/vimscript/nerdtree.vim
+
+set commentary
+set highlightedyank
+set matchit
+set sneak
+set smartcase
+
+" Uses LSP keybindings.
+execute 'map '.lsp_keybindings['rename'].               ' <Action>(RenameElement)'
+execute 'map '.lsp_keybindings['previewDefinition'].    ' <Action>(QuickImplementations)'
+execute 'map '.lsp_keybindings['goToImplementation'].   ' <Action>(GotoImplementation)'
+execute 'map '.lsp_keybindings['signatureHelp'].        ' <Action>(ParameterInfo)'
+execute 'map '.lsp_keybindings['goToTypeDefinition'].   ' <Action>(GotoTypeDeclaration)'
+execute 'map '.lsp_keybindings['codeAction'].           ' <Action>(ShowIntentionActions)'
+execute 'map '.lsp_keybindings['references'].           ' <Action>(FindUsages)'
+execute 'map '.lsp_keybindings['showErrorDescription']. ' <Action>(ShowErrorDescription)'
+execute 'map '.lsp_keybindings['reformat'].             ' <Action>(ReformatCode)'
+execute 'map '.lsp_keybindings['showErrorWindow'].      ' <Action>(ActivateProblemsViewToolWindow)'
+execute 'map '.lsp_keybindings['goToNextError'].        ' <Action>(GotoNextError)'
+execute 'map '.lsp_keybindings['goToPreviousError'].    ' <Action>(GotoPreviousError)'
+execute 'map '.lsp_keybindings['goToDefinition'].       ' <Action>(GotoDeclaration)'
+execute 'map '.lsp_keybindings['hoverDoc'].             ' <Action>(QuickJavaDoc)'
+
+map <leader>w <Action>(NextSplitter)
+" execute 'map '.lsp_key_bindings[''].'<Action>(SelectIn)'
+
+" Other mappings
+nmap <C-o> <Action>(Back)
+nmap <C-i> <Action>(Forward)
+nmap g; <Action>(JumpToLastChange)
+nmap g, <Action>(JumpToNextChange)
+" These should match git gutter bindings
+nmap [c <Action>(VcsShowPrevChangeMarker)
+nmap ]c <Action>(VcsShowNextChangeMarker)
+
+" IdeaVim Plugin Emulations.
+" NERDTree bindings set by nerdtree.vim file.
+" highlightedyank set by actual plugin config.
+" commentary set by actual plugin config.
+
+" Similar to vim-maximize plugin
+map <C-w>m <Action>(MaximizeEditorInSplit)

@@ -6,6 +6,6 @@ augroup ProjectDrawer
       \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 augroup END
 
-nnoremap <leader>e :NERDTreeFocus<CR>
-nnoremap <leader>ec :NERDTreeClose<CR>
-nnoremap <leader>ef :NERDTreeFind<CR>
+nnoremap <leader>oe :NERDTreeFocus<CR>
+nnoremap <leader>ce :NERDTreeClose<CR>
+nnoremap <leader>fe :NERDTreeFind<CR>
