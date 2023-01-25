@@ -32,5 +32,6 @@ call plug#begin('~/dotfiles/config/nvim/autoload/plugged')
     Plug 'tpope/vim-commentary'
     Plug 'sbdchd/neoformat'
     Plug 'machakann/vim-highlightedyank'
+    Plug 'justinmk/vim-sneak'
 
 call plug#end()
