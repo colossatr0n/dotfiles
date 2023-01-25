@@ -39,11 +39,13 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', vim.g.lsp_keybindings['reformat'],                  '<cmd>lua vim.lsp.buf.format({ async = true })<CR>', opts)
   buf_set_keymap('n', vim.g.lsp_keybindings['references'],                '<cmd>lua require("telescope.builtin").lsp_references()<CR>', opts)
   buf_set_keymap('n', vim.g.lsp_keybindings['goToImplementation'],        '<cmd>lua require("telescope.builtin").lsp_implementations()<CR>', opts)
+  -- Search document symbols
   buf_set_keymap('n', '<leader>ds',                                       '<cmd>require("telescope.builtin").lsp_document_symbols()<CR>', opts)
+  -- Search workspace symbols
   buf_set_keymap('n', '<leader>ws',                                       '<cmd>require("telescope.builtin").lsp_dynamic_workspace_symbols()<CR>', opts)
-  buf_set_keymap('n', '<leader>wa',                                      '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<leader>wr',                                      '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<leader>wl',                                      '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['addWorkspaceFolder'],        '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['removeWorkspaceFolder'],     '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['showWorkspaceFolders'],      '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
 
 end
 
@@ -63,63 +65,61 @@ vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
     {border = 'rounded'}
 )
 
-
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches. Also add autocompletions.
 local servers = { 
-    'tsserver', 
-    'angularls',
-    'html',
-    'vuels',
-    'bashls',
-    'pylsp' -- pip3 install python-lsp-server && pip3 install "python-lsp-server[yapf]
+    sumneko_lua = {
+        cmd = { "lua-language-server" },
+        settings = { 
+            Lua = {
+                workspace = { checkThirdParty = false },
+                telemetry = { enable = false },
+            }
+        }
+    },
+    tsserver = {}, 
+    angularls = {},
+    html = {},
+    vuels = {},
+    bashls = {},
+    pylsp = {}, -- pip3 install python-lsp-server && pip3 install "python-lsp-server[yapf]
+    sourcekit = {
+        cmd = { "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp" },
+        filetypes = { "swift", "objective-c", "objective-cpp", "objc" },
+    },
+    java_language_server = {
+        cmd = { HOME .. '/code/language-servers/java-language-server-master/dist/lang_server_mac.sh' },
+    },
+    clangd = {
+        cmd = { "/usr/local/opt/llvm/bin/clangd" },
+    }
 }
 
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
--- local get_servers = require('mason-lspconfig').get_installed_servers
 
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
+local defaults =  {
     on_attach = on_attach,
     single_file_support = true,
     flags = {
       debounce_text_changes = 150,
     },
     capabilities = lsp_capabilities,
-  }
+}
+
+-- Ensure the installed lsps are configured
+require('mason-lspconfig').setup_handlers({
+  function(server_name)
+    nvim_lsp[server_name].setup( 
+        defaults
+    )
+  end,
+})
+
+-- Overwrite or set up lsps
+for lsp, config in pairs(servers) do
+  nvim_lsp[lsp].setup(vim.tbl_extend('force', defaults, config))
 end
 
--- Not able to add swift/cpp stuff the normal way. Adding it manually.
-nvim_lsp['sourcekit'].setup {
-    cmd = { "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp" },
-    filetypes = { "swift", "objective-c", "objective-cpp", "objc" },
-    on_attach = on_attach,
-    flags = {
-      debounce_text_changes = 150,
-    },
-    capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-}
-
--- Not able to add java the normal way
-nvim_lsp['java_language_server'].setup {
-    cmd = { HOME .. '/code/language-servers/java-language-server-master/dist/lang_server_mac.sh' },
-    on_attach = on_attach,
-    single_file_support = true,
-    flags = {
-      debounce_text_changes = 150,
-    },
-    capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-}
-
-nvim_lsp['clangd'].setup {
-    cmd = { "/usr/local/opt/llvm/bin/clangd" },
-    on_attach = on_attach,
-    single_file_support = true,
-    flags = {
-      debounce_text_changes = 150,
-    },
-    capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-}
 
 --Enable (broadcasting) snippet capability for completion
 local capabilities = vim.lsp.protocol.make_client_capabilities()

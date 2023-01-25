@@ -14,6 +14,8 @@ autocmd VimEnter *
 call plug#begin('~/dotfiles/config/nvim/autoload/plugged')
 
     " LSP support
+    Plug 'williamboman/mason.nvim'
+    Plug 'williamboman/mason-lspconfig.nvim'
     Plug 'neovim/nvim-lspconfig'
 
     " Autocompletion
@@ -61,6 +63,7 @@ call plug#begin('~/dotfiles/config/nvim/autoload/plugged')
     Plug 'machakann/vim-highlightedyank'
     Plug 'justinmk/vim-sneak'
     Plug 'szw/vim-maximizer'
+    Plug 'folke/neodev.nvim'
 
     " Themes
     Plug 'rose-pine/neovim', {'as': 'rose-pine'}

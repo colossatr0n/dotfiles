@@ -4,12 +4,13 @@ let lsp_keybindings = {
             \ 'goToDefinition'         : 'gd',
             \ 'previewDefinition'      : '<leader>pd',
             \ 'reformat'               : '<leader>rf',
-            \ 'goToImplementation'     : '<leader>i',
+            \ 'goToImplementation'     : 'gI',
             \ 'signatureHelp'          : '<leader>pi',
-            \ 'goToTypeDefinition'     : '<leader>t',
+            \ 'goToTypeDefinition'     : 'gt',
             \ 'rename'                 : '<leader>rn',
             \ 'codeAction'             : '<leader>a',
             \ 'finder'                 : '<leader>u',
+            \ 'references'             : 'gr',
             \
             \ 'showErrorDescription'   : '<leader>e',
             \ 'hoverDoc'               : '<leader>hd',
@@ -29,4 +30,3 @@ let lsp_keybindings = {
 let g:lsp_keybindings = lsp_keybindings
 
 " Unused key pairs
-" \ 'references'             : '<leader>u',

@@ -13,7 +13,10 @@ source $HOME/dotfiles/config/nvim/vimscript/nerdtree.vim
 source $HOME/dotfiles/config/nvim/vimscript/vim-maximizer.vim
 source $HOME/dotfiles/config/nvim/vimscript/gitgutter.vim
 
+lua require('nvim-neodev')
 lua require('nvim-cmp')
+lua require('nvim-mason')
+lua require('nvim-mason-lspconfig')
 lua require('nvim-lspconfig')
 lua require('nvim-lspsaga')
 
