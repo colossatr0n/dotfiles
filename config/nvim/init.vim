@@ -1,3 +1,12 @@
+source $HOME/dotfiles/config/vim/vimrc
+
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set mouse=r
+
+set rtp+=/usr/local/opt/fzf
+
 set number
 set updatetime=100
 let mapleader=" "
@@ -11,7 +20,6 @@ set smartcase
 nnoremap <leader>w <c-w><c-p>
 
 " Load plugins
-source $HOME/dotfiles/config/vim/vimrc
 source $HOME/dotfiles/config/nvim/vim-plug/plugins.vim
 source $HOME/dotfiles/config/nvim/vimscript/vim-sneak.vim
 source $HOME/dotfiles/config/nvim/vimscript/nerdtree.vim

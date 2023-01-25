@@ -61,13 +61,37 @@ Global commands start with `:g` and are followed by a regexp and then a command:
 2. `:`
 3. `!jq`
 
+## Run command in temp buffer
+1. Visual selection
+2. `:<,'>w !bash`
+
+## Run command and replace selected with output
+1. Visual selection
+2. `:<,'> !bash
+
 # File
 ## Got to file
 Go to file using `gf`. To go to a file path that uses spaces instead of escaped spaces, visually select the path and then press `gf`.
 
 # Viewing
-# View Mappings
-Use `:map` to view custom mappings.
+## View Mappings
+Use `:map` to view custom mappings or `:Map` for fzf finding.
+
+## View commands
+Use `:commands` or `:Commands` for fzf finding.
+
+# Global Commands
+Global commands are issued with `:g`.
+
+## Yank all matching lines
+1. Clear register: `qaq`
+2. Issue global command: `g/.*blah/y A`
+
+Ensure that the register is capitalized, as this indicates to vim that it should append to the register rather than overwrite it.
+
+## Delete all matching lines
+1. Clear register: `qaq`
+2. Issue global command: `g/\v.*\[".+"\]/d A` 
 
 # Reordering lines
 This works on up to 9 lines.
