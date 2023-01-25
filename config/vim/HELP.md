@@ -5,6 +5,15 @@
 :cdo update #(save all files)
 ```
 
+# How to find uniqe entries in vim
+Save both buffers to some tmp file.
+
+```
+comm -13 <(sort -u /tmp/a) <(sort -u /tmp/b)    
+```
+
+This will tell you which things are unique to the second file (things that the first file doesn't contain.
+
 # Regex
 ## Non-greedy Quantifier
 Use `.\{-}` in place of `.*?`.
@@ -118,3 +127,8 @@ To turn it off, use `:diffoff!`. `!` applies it to al windows.
 Use `%V`.
 
 `:'<,'>s/\%V /_/g`
+
+# Copy from buffer to vim Terminal buffer
+To paste from a register into the terminal window you have to be in Terminal-Job ("insert") mode.
+
+Press CTRL-W " followed by the register.
