@@ -112,4 +112,8 @@ source ~/.zshrc.local
 # Set terminal shortcuts to behave like vi
 set -o vi
 ########################################
+# ALIASES
+alias vim='nvim'
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
