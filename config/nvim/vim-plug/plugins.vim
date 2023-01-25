@@ -6,6 +6,11 @@ if empty(glob('~/dotfiles/config/nvim/autoload/plug.vim'))
   "autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
+autocmd VimEnter *
+  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \|   PlugInstall --sync | q
+  \| endif
+
 call plug#begin('~/dotfiles/config/nvim/autoload/plugged')
 
 	Plug '/usr/local/opt/fzf'
