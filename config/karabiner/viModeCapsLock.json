@@ -377,6 +377,50 @@
                     }
                 ],
                 "type": "basic"
+            },
+            {
+                "description": "Move left a space",   
+                "from": {
+                    "key_code": "s"
+                },
+                "to": [
+                    {
+                        "key_code": "left_arrow",
+                        "modifiers": [
+                            "control"
+                        ]
+                    }
+                ],
+                "conditions": [
+                    {
+                        "name": "trigger key pressed",
+                        "type": "variable_if",
+                        "value": 1
+                    }
+                ],
+                "type": "basic"
+            },
+            {
+                "description": "Move right a space",   
+                "from": {
+                    "key_code": "d"
+                },
+                "to": [
+                    {
+                        "key_code": "right_arrow",
+                        "modifiers": [
+                            "control"
+                        ]
+                    }
+                ],
+                "conditions": [
+                    {
+                        "name": "trigger key pressed",
+                        "type": "variable_if",
+                        "value": 1
+                    }
+                ],
+                "type": "basic"
             }
         ]
     }
