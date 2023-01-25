@@ -45,6 +45,15 @@ doo-a-a-a-ood
 
 See https://vi.stackexchange.com/questions/20704/how-to-run-a-substitute-command-on-only-a-certain-part-of-the-line/20706#20706
 
+# Global Commands
+Global commands start with `:g` and are followed by a regexp and then a command: `:g/regexp/cmd`
+
+## Yank all lines matching a pattern
+1. Clear register that you want to yank in to: `qaq`.
+2. Then yank using: `:g/regex/y A`.
+  1. Register must be capitalized. This means to append rather than rewrite to register `a`.
+3. Paste using: `"ap`.
+
 
 # Terminal Commands
 ## jq
