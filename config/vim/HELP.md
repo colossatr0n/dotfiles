@@ -120,3 +120,8 @@ To turn it off, use `:diffoff!`. `!` applies it to al windows.
 Use `%V`.
 
 `:'<,'>s/\%V /_/g`
+
+# Copy from buffer to vim Terminal buffer
+To paste from a register into the terminal window you have to be in Terminal-Job ("insert") mode.
+
+Press CTRL-W " followed by the register.
