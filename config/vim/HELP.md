@@ -78,3 +78,7 @@ This works on up to 9 lines.
 4. Repeat with the dot command, eight times.
 
 NOTE: This doesn't work in IntelliJ.
+
+# Diff Windows
+`:windo diffthis` will diff all windows. `:windo` performs the operation on all windows.
+To turn it off, use `:diffoff!`. `!` applies it to al windows.
