@@ -1,3 +1,9 @@
+let mapleader=" "
+set number
+set timeoutlen=500
+set ignorecase
+set smartcase
+
 if !has("ide")
     " Maintainer:	Bram Moolenaar <Bram@vim.org>
     " Last change:	2019 Jan 26
@@ -66,12 +72,6 @@ if !has("ide")
     " Go to last used window
     nnoremap <leader>w <c-w><c-p>
 endif
-
-set number
-set timeoutlen=500
-set ignorecase
-set smartcase
-let mapleader=" "
 
 function! OpenURLUnderCursor()
   let s:uri = expand('<cWORD>')

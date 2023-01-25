@@ -47,3 +47,7 @@ nmap <leader>hp <Action>(VcsShowCurrentChangeMarker)
 
 " Similar to vim-maximize plugin
 map <C-w>m <Action>(MaximizeEditorInSplit)
+
+" Manually simulating vim-sneak with labels
+nmap s <Action>(AceForwardAction)
+nmap S <Action>(AceBackwardAction)
