@@ -18,3 +18,11 @@ Or you can use `\v` to not have to escape them:
 1. Select text
 2. `:`
 3. `!jq`
+
+# File
+## Got to file
+Go to file using `gf`. To go to a file path that uses spaces instead of escaped spaces, visually select the path and then press `gf`.
+
+# Viewing
+# View Mappings
+Use `:map` to view custom mappings.

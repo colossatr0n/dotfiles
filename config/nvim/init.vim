@@ -22,7 +22,7 @@ nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <leader>m :NERDTreeFind<CR>
 
 " Go to last used window
-nnoremap <space>a <c-w><c-p>
+nnoremap <leader>a <c-w><c-p>
 
 
 colorscheme darcula
