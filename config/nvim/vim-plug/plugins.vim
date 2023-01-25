@@ -29,5 +29,7 @@ call plug#begin('~/dotfiles/config/nvim/autoload/plugged')
     Plug 'preservim/nerdtree'
     Plug 'akinsho/toggleterm.nvim'
     Plug 'jremmen/vim-ripgrep'
+    Plug 'tpope/vim-commentary'
+    Plug 'sbdchd/neoformat'
 
 call plug#end()

@@ -47,7 +47,11 @@ local cmp = require('nvim-cmp')
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches. Also add autocompletions.
-local servers = { 'tsserver', 'angularls' }
+local servers = { 
+    'tsserver', 
+    'angularls',
+    'html'
+}
 
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
@@ -59,6 +63,18 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+nvim_lsp['sourcekit'].setup {
+    cmd = { "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp" },
+    filetypes = { "swift", "c",  "cpp", "objective-c", "objective-cpp", "objc" },
+    on_attach = on_attach,
+    flags = {
+      debounce_text_changes = 150,
+    },
+    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+}
+
 -- NPM installs for language servers
 -- npm install -g typescript typescript-language-server
 -- angular-language-server can be installed via npm install -g @angular/language-server.
+-- npm i -g vscode-langservers-extracted
+

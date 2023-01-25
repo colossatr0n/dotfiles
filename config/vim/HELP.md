@@ -13,4 +13,8 @@ Or you can use `\v` to not have to escape them:
 
 `:%s/\v(someWord)`
 
-
+# Terminal Commands
+## jq
+1. Select text
+2. `:`
+3. `!jq`
