@@ -150,9 +150,12 @@ resetroute() {
 #Set up environment variables
 source ~/dotfiles/config/yabai/vars
 
+<<<<<<< Updated upstream
 # Set up local configurations that shouldn't be shared across machines
 source ~/.zshrc.local
 
+=======
+>>>>>>> Stashed changes
 # Set terminal shortcuts to behave like vi
 set -o vi
 
