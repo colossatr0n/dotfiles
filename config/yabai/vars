@@ -9,9 +9,9 @@ if [[ $USER == 'Thack' ]]; then
    # Not using the WORKSTATION var yet, but leaving it here if I decide to.
    WORKSTATION=home
 elif [[ $USER == 'tarchuletta' ]]; then
-   YABAI_LEFT_DISP=2
+   YABAI_LEFT_DISP=3
    YABAI_MID_DISP=1
-   YABAI_RIGHT_DISP=3
+   YABAI_RIGHT_DISP=2
 
    WORKSTATION=work
 fi
