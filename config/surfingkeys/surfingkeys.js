@@ -6,8 +6,20 @@ api.mapkey('<ctrl-y>', 'Show me the money', function() {
 // an example to replace `T` with `gt`, click `Default mappings` to see how `T` works.
 api.map('gt', 'T');
 
-api.map('q', '<Alt-i>')
+api.map('p', '<Alt-i>')
 api.map(';p', ';s')
+api.map('ZZ', ':wq')
+
+
+// Unmap search engine shortcuts.
+api.unmap('sg')
+api.unmap('sd')
+api.unmap('sb')
+api.unmap('se')
+api.unmap('sw')
+api.unmap('ss')
+api.unmap('sh')
+api.unmap('sy')
 
 settings.scrollStepSize = 200;
 
