@@ -25,5 +25,6 @@ call plug#begin('~/dotfiles/config/nvim/autoload/plugged')
     Plug 'saadparwaiz1/cmp_luasnip' " Snippets source for nvim-cmp
     Plug 'L3MON4D3/LuaSnip' " Snippets plugin
     Plug 'glepnir/lspsaga.nvim'
+    Plug 'preservim/nerdtree'
 
 call plug#end()
