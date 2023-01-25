@@ -26,13 +26,13 @@ execute 'map '.lsp_keybindings['goToDefinition'].       ' <Action>(GotoDeclarati
 execute 'map '.lsp_keybindings['hoverDoc'].             ' <Action>(QuickJavaDoc)'
 
 map <leader>w <Action>(NextSplitter)
-" execute 'map '.lsp_key_bindings[''].'<Action>(SelectIn)'
 
 " Other mappings
 nmap <C-o> <Action>(Back)
 nmap <C-i> <Action>(Forward)
 nmap g; <Action>(JumpToLastChange)
 nmap g, <Action>(JumpToNextChange)
+
 " These should match git gutter bindings
 nmap [c <Action>(VcsShowPrevChangeMarker)
 nmap ]c <Action>(VcsShowNextChangeMarker)
@@ -40,12 +40,15 @@ nmap <leader>hu <Action>(Vcs.RollbackChangedLines)
 nmap <leader>hp <Action>(VcsShowCurrentChangeMarker)
 
 " IdeaVim Plugin Emulations.
-" NERDTree bindings set by nerdtree.vim file.
-" highlightedyank set by actual plugin config.
-" commentary set by actual plugin config.
+" * NERDTree bindings set by nerdtree.vim file.
+" * highlightedyank set by actual plugin config.
+" * commentary set by actual plugin config.
 
 " Similar to vim-maximize plugin
 map <C-w>m <Action>(MaximizeEditorInSplit)
+
+" Ensure this matches my custom fzf mappings
+map <leader>o <Action>(GotoFile)
 
 " Manually simulating vim-sneak with labels
 nmap s <Action>(AceForwardAction)
