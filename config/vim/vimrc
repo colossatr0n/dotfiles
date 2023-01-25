@@ -56,3 +56,5 @@ set hidden
 " see for yourself
 set backspace=indent,eol,start
 
+set splitbelow
+set splitright
