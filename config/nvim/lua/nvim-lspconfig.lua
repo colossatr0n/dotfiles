@@ -36,7 +36,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', vim.g.lsp_keybindings['goToPreviousError'],         '<cmd>lua require("lspsaga.diagnostic").goto_prev({ severity = "Error" })<CR>', opts)
   buf_set_keymap('n', vim.g.lsp_keybindings['goToNextError'],             '<cmd>lua require("lspsaga.diagnostic").goto_next({ severity = "Error" })<CR>', opts)
   buf_set_keymap('n', vim.g.lsp_keybindings['showErrorWindow'],           '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap('n', vim.g.lsp_keybindings['reformat'],                  '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['reformat'],                  '<cmd>lua vim.lsp.buf.format { async = true }<CR>', opts)
 
 end
 
@@ -56,7 +56,7 @@ local servers = {
     'html',
     'vuels',
     'bashls',
-    'pylsp' -- pip3 install python-lsp-server
+    'pylsp' -- pip3 install python-lsp-server && pip3 install "python-lsp-server[yapf]
 }
 
 for _, lsp in ipairs(servers) do
