@@ -56,10 +56,3 @@ set hidden
 " see for yourself
 set backspace=indent,eol,start
 
-set tabstop=4
-set shiftwidth=4
-set expandtab
-set mouse=r
-
-set rtp+=/usr/local/opt/fzf
-

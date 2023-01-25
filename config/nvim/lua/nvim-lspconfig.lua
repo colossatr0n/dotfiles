@@ -51,7 +51,9 @@ local servers = {
     'tsserver', 
     'angularls',
     'html',
-    'vuels'
+    'vuels',
+    'bashls',
+    'pylsp'
 }
 
 for _, lsp in ipairs(servers) do
@@ -60,10 +62,11 @@ for _, lsp in ipairs(servers) do
     flags = {
       debounce_text_changes = 150,
     },
-    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
   }
 end
 
+-- Not able to add swift/cpp stuff the normal way. Adding it manually.
 nvim_lsp['sourcekit'].setup {
     cmd = { "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp" },
     filetypes = { "swift", "c",  "cpp", "objective-c", "objective-cpp", "objc" },
