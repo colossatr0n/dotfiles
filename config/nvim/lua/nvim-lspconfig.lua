@@ -46,8 +46,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     }
 )
 
-local cmp = require('nvim-cmp')
-
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches. Also add autocompletions.
 local servers = { 
@@ -59,13 +57,16 @@ local servers = {
     'pylsp' -- pip3 install python-lsp-server
 }
 
+local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- local get_servers = require('mason-lspconfig').get_installed_servers
+
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
     flags = {
       debounce_text_changes = 150,
     },
-    capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+    capabilities = lsp_capabilities,
   }
 end
 

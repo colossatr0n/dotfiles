@@ -13,19 +13,33 @@ autocmd VimEnter *
 
 call plug#begin('~/dotfiles/config/nvim/autoload/plugged')
 
+    " LSP support
+    Plug 'neovim/nvim-lspconfig'
+
+    " Autocompletion
+    Plug 'hrsh7th/nvim-cmp' " Autocompletion plugin
+    Plug 'hrsh7th/cmp-buffer'  " provides suggestions based on the current file.
+    Plug 'hrsh7th/cmp-path' " gives completions based on the filesystem.
+    Plug 'hrsh7th/cmp-nvim-lua' " provides completions based on neovim's lua api.
+    Plug 'hrsh7th/cmp-nvim-lsp' " LSP source for nvim-cmp. show data send by the language server.
+    Plug 'saadparwaiz1/cmp_luasnip' " Snippets source for nvim-cmp. it shows snippets in the suggestions.
+
+    " Snippets
+    Plug 'L3MON4D3/LuaSnip' " Snippets plugin
+    Plug 'rafamadriz/friendly-snippets'
+
+      " LSP Setup
+    Plug 'VonHeikemen/lsp-zero.nvim'
+    Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
+
 	Plug '/usr/local/opt/fzf'
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
-    Plug 'doums/darcula'
+    " Plug 'doums/darcula'
     Plug 'itchyny/lightline.vim'
     Plug 'airblade/vim-gitgutter'
-    Plug 'neovim/nvim-lspconfig'
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    Plug 'hrsh7th/nvim-cmp' " Autocompletion plugin
-    Plug 'hrsh7th/cmp-nvim-lsp' " LSP source for nvim-cmp
-    Plug 'saadparwaiz1/cmp_luasnip' " Snippets source for nvim-cmp
-    Plug 'L3MON4D3/LuaSnip' " Snippets plugin
-    Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
+
     Plug 'preservim/nerdtree'
     Plug 'akinsho/toggleterm.nvim'
     Plug 'jremmen/vim-ripgrep'
@@ -35,4 +49,7 @@ call plug#begin('~/dotfiles/config/nvim/autoload/plugged')
     Plug 'justinmk/vim-sneak'
     Plug 'szw/vim-maximizer'
 
+    Plug 'rose-pine/neovim', {'as': 'rose-pine'}
+
 call plug#end()
+

@@ -115,5 +115,7 @@ set -o vi
 # ALIASES
 alias vim='nvim'
 
+export COLORTERM="truecolor"
+export BAT_THEME='Coldark-Dark'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

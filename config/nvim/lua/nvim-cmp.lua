@@ -1,3 +1,5 @@
+local s = {}
+
 -- SET UP AUTOCOMPLETION
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -20,41 +22,85 @@ cmp.setup {
     end,
   },
   mapping = {
-    ['<C-p>'] = cmp.mapping.select_prev_item(),
-    ['<C-n>'] = cmp.mapping.select_next_item(),
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    },
-    ['<Tab>'] = function(core, fallback)
-      if vim.fn.pumvisible() == 1 then
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-n>', true, true, true), 'n')
-      elseif luasnip.expand_or_jumpable() then
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-expand-or-jump', true, true, true), '')
-      elseif not check_back_space() then
-        cmp.mapping.complete()(core, fallback)
+       -- confirm selection
+    ['<CR>'] = cmp.mapping.confirm({select = false}),
+    ['<C-y>'] = cmp.mapping.confirm({select = false}),
+
+    -- navigate items on the list
+    ['<Up>'] = cmp.mapping.select_prev_item(select_opts),
+    ['<Down>'] = cmp.mapping.select_next_item(select_opts),
+    ['<C-p>'] = cmp.mapping.select_prev_item(select_opts),
+    ['<C-n>'] = cmp.mapping.select_next_item(select_opts),
+
+    -- scroll up and down in the completion documentation
+    ['<C-f>'] = cmp.mapping.scroll_docs(5),
+    ['<C-u>'] = cmp.mapping.scroll_docs(-5),
+
+    -- toggle completion
+    ['<C-e>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.abort()
       else
-        vim.cmd(':>')
+        cmp.complete()
       end
-    end,
-    ['<S-Tab>'] = function(fallback)
-      if vim.fn.pumvisible() == 1 then
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-p>', true, true, true), 'n')
-      elseif luasnip.jumpable(-1) then
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-jump-prev', true, true, true), '')
+    end),
+
+    -- go to next placeholder in the snippet
+    ['<C-d>'] = cmp.mapping(function(fallback)
+      if luasnip.jumpable(1) then
+        luasnip.jump(1)
       else
-        vim.cmd(':<')
+        fallback()
       end
-    end,
+    end, {'i', 's'}),
+
+    -- go to previous placeholder in the snippet
+    ['<C-b>'] = cmp.mapping(function(fallback)
+      if luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, {'i', 's'}),
+
+    -- when menu is visible, navigate to next item
+    -- when line is empty, insert a tab character
+    -- else, activate completion
+    ['<Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item(select_opts)
+      elseif s.check_back_space() then
+        fallback()
+      else
+        cmp.complete()
+      end
+    end, {'i', 's'}),
+
+    -- when menu is visible, navigate to previous item on list
+    -- else, revert to default behavior
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item(select_opts)
+      else
+        fallback()
+      end
+    end, {'i', 's'}),
   },
   sources = {
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
+    {name = 'path'},
+    { name = 'nvim_lsp',  keyword_length = 3 },
+    { name = 'buffer',  keyword_length = 3 },
+    { name = 'luasnip',  keyword_length = 2 },
   },
 }
+
+s.check_back_space = function()
+  local col = vim.fn.col('.') - 1
+  if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
+    return true
+  else
+    return false
+  end
+end
 
 -- The auto completion is set up for each language server in the nvim-lspconfig.vim
