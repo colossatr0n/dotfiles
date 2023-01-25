@@ -4,6 +4,8 @@ set timeoutlen=500
 set ignorecase
 set smartcase
 
+nnoremap <leader>f <C-^>
+
 if !has("ide")
     " Maintainer:	Bram Moolenaar <Bram@vim.org>
     " Last change:	2019 Jan 26

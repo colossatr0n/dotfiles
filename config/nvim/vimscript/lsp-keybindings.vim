@@ -3,11 +3,11 @@ let lsp_keybindings = {
             \ 'goToDeclaration'        : 'gD',
             \ 'goToDefinition'         : 'gd',
             \ 'previewDefinition'      : '<leader>pd',
-            \ 'reformat'               : '<leader>f',
+            \ 'reformat'               : '<leader>rf',
             \ 'goToImplementation'     : '<leader>i',
             \ 'signatureHelp'          : '<leader>pi',
             \ 'goToTypeDefinition'     : '<leader>t',
-            \ 'rename'                 : '<leader>r',
+            \ 'rename'                 : '<leader>rn',
             \ 'codeAction'             : '<leader>a',
             \ 'references'             : '<leader>u',
             \
