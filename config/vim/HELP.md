@@ -28,6 +28,24 @@ Keep - me
 > Keep me
 ```
 
+## Replace all occurrences within a pattern
+Use something like `\=substitute(submatch(0), '_', ' ', 'g')`. 
+The definnition is `substitute({expression}, {pattern}, {replacement}, {flags})`
+
+In the replacement component we open with \=. This special operator tells Vim to treat everything that follows as an expression, evaluate it, and use the result as the replacement of the final matched text.
+
+```
+# This replaces all the dashes with spaces
+doo-a-a-a-ood
+
+:%s!\vd.*d!\=substitute(submatch(0), '-', ' ', 'g')!gc  
+
+> doo a a a ood
+```
+
+See https://vi.stackexchange.com/questions/20704/how-to-run-a-substitute-command-on-only-a-certain-part-of-the-line/20706#20706
+
+
 # Terminal Commands
 ## jq
 1. Select text
