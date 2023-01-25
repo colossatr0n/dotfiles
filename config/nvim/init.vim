@@ -11,6 +11,7 @@ source $HOME/dotfiles/config/nvim/vimscript/vim-sneak.vim
 source $HOME/dotfiles/config/nvim/vimscript/nerdtree.vim
 source $HOME/dotfiles/config/nvim/vimscript/vim-maximizer.vim
 source $HOME/dotfiles/config/nvim/vimscript/gitgutter.vim
+source $HOME/dotfiles/config/nvim/vimscript/darcula.vim
 lua require('nvim-lspconfig')
 lua require('nvim-lspsaga')
 lua require('nvim-toggleterm')
