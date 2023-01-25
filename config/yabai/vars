@@ -1,0 +1,23 @@
+#!/usr/bin/env sh
+
+# Set workstation dependent variables                                                                                                                                           
+if [ $USER == 'Thack' ]; then
+   YABAI_LEFT_DISP=3
+   YABAI_MID_DISP=1
+   YABAI_RIGHT_DISP=2
+
+   # Not using the WORKSTATION var yet, but leaving it here if I decide to.
+   WORKSTATION=home
+else
+   YABAI_LEFT_DISP=2
+   YABAI_MID_DISP=1
+   YABAI_RIGHT_DISP=3
+   
+   WORKSTATION=work
+fi
+
+# Not exporting these as shell variables since yabai and skhd are run by launchctl/brew services
+launchctl setenv YABAI_LEFT_DISP $YABAI_LEFT_DISP
+launchctl setenv YABAI_MID_DISP $YABAI_MID_DISP
+launchctl setenv YABAI_RIGHT_DISP $YABAI_RIGHT_DISP
+launchctl setenv WORKSTATION $WORKSTATION

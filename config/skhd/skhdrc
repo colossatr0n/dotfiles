@@ -6,9 +6,9 @@ alt - l : yabai -m window --focus east
 
 # Navigation (displays)
 # Key codes: 0x2B = comma, 0x2F = period
-alt - m : yabai -m display --focus 2; yabai -m display --focus 2
-alt - 0x2B : yabai -m display --focus 1; yabai -m display --focus 1
-alt - 0x2F : yabai -m display --focus 3;
+alt - m : yabai -m display --focus $YABAI_LEFT_DISP;
+alt - 0x2B : yabai -m display --focus $YABAI_MID_DISP;
+alt - 0x2F : yabai -m display --focus $YABAI_RIGHT_DISP;
 
 # Navigation (spaces)
 alt - s: skhd --key "ctrl - left"
@@ -21,9 +21,9 @@ shift + alt - i : yabai -m window --warp north
 shift + alt - l : yabai -m window --warp east
 
 # Moving windows (to display)
-shift + alt - m: yabai -m window --display 2; yabai -m display --focus 2
-shift + alt - 0x2B: yabai -m window --display 1; yabai -m display --focus 1
-shift + alt - 0x2F: yabai -m window --display 3; yabai -m display --focus 3
+shift + alt - m: yabai -m window --display $YABAI_LEFT_DISP; yabai -m display --focus $YABAI_LEFT_DISP
+shift + alt - 0x2B: yabai -m window --display $YABAI_MID_DISP; yabai -m display --focus $YABAI_MID_DISP
+shift + alt - 0x2F: yabai -m window --display $YABAI_RIGHT_DISP; yabai -m display --focus $YABAI_RIGHT_DISP
 
 # Move focus container to workspace
 #shift + alt - m : yabai -m window --space last && yabai -m space --focus last
