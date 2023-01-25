@@ -568,11 +568,194 @@
                         "name": "trigger key pressed",
                         "type": "variable_if",
                         "value": 1
+                    },
+                    {
+                        "type": "frontmost_application_if",
+                        "bundle_identifiers": [
+                                 "^com\\.apple\\.Terminal"        
+                        ]
+                    }
+                ],
+                "type": "basic"
+            },
+            {
+                "description": "Caps Lock + w to alt + backspace (outside vim)",   
+                "from": {
+                    "key_code": "w"
+                },
+                "to": [
+                    {
+                        "key_code": "delete_or_backspace",
+                        "modifiers": [
+                            "option"
+                        ]
+                    }
+                ],
+                "conditions": [
+                    {
+                        "name": "trigger key pressed",
+                        "type": "variable_if",
+                        "value": 1
+                    },
+                    {
+                        "type": "frontmost_application_unless",
+                        "bundle_identifiers": [
+                                 "^com\\.apple\\.Terminal"        
+                        ]
+                    }
+                ],
+                "type": "basic"
+            }
+        ]
+    },
+    {
+        "description": "Move left or right a space with s or d",
+        "manipulators": [
+            {
+                "description": "Move left a space",   
+                "from": {
+                    "key_code": "s"
+                },
+                "to": [
+                    {
+                        "key_code": "left_arrow",
+                        "modifiers": [
+                            "control"
+                        ]
+                    }
+                ],
+                "conditions": [
+                    {
+                        "name": "trigger key pressed",
+                        "type": "variable_if",
+                        "value": 1
+                    }
+                ],
+                "type": "basic"
+            },
+            {
+                "description": "Move right a space",   
+                "from": {
+                    "key_code": "d"
+                },
+                "to": [
+                    {
+                        "key_code": "right_arrow",
+                        "modifiers": [
+                            "control"
+                        ]
+                    }
+                ],
+                "conditions": [
+                    {
+                        "name": "trigger key pressed",
+                        "type": "variable_if",
+                        "value": 1
+                    }
+                ],
+                "type": "basic"
+            }
+        ]
+    },
+    {
+        "description": "Set hjkl keys to arrow keys.",
+        "manipulators": [
+            {
+                "description": "Sets h to left arrow. Works with selection.",
+                "from": {
+                    "key_code": "h",
+                    "modifiers": {
+                        "optional": [
+                            "any"
+                        ]
+                    }
+                },
+                "to": [
+                    {
+                        "key_code": "left_arrow"
+                    }
+                ],
+                "conditions": [
+                    {
+                        "name": "trigger key pressed",
+                        "type": "variable_if",
+                        "value": 1
+                    }
+                ],
+                "type": "basic"
+            },
+            {
+                "description": "Sets j to down arrow. Works with selection.",
+                "from": {
+                    "key_code": "j",
+                    "modifiers": {
+                        "optional": [
+                            "any"
+                        ]
+                    }
+                },
+                "to": [
+                    {
+                        "key_code": "down_arrow"
+                    }
+                ],
+                "conditions": [
+                    {
+                        "name": "trigger key pressed",
+                        "type": "variable_if",
+                        "value": 1
+                    }
+                ],
+                "type": "basic"
+            },
+            {
+                "description": "Sets k to up arrow. Works with selection.",
+                "from": {
+                    "key_code": "k",
+                    "modifiers": {
+                        "optional": [
+                            "any"
+                        ]
+                    }
+                },
+                "to": [
+                    {
+                        "key_code": "up_arrow"
+                    }
+                ],
+                "conditions": [
+                    {
+                        "name": "trigger key pressed",
+                        "type": "variable_if",
+                        "value": 1
+                    }
+                ],
+                "type": "basic"
+            },
+            {
+                "description": "Sets l to right arrow. Works with selection.",
+                "from": {
+                    "key_code": "l",
+                    "modifiers": {
+                        "optional": [
+                            "any"
+                        ]
+                    }
+                },
+                "to": [
+                    {
+                        "key_code": "right_arrow"
+                    }
+                ],
+                "conditions": [
+                    {
+                        "name": "trigger key pressed",
+                        "type": "variable_if",
+                        "value": 1
                     }
                 ],
                 "type": "basic"
             }
         ]
     }
-]
-}
+]}
