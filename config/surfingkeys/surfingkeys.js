@@ -7,6 +7,7 @@ api.mapkey('<ctrl-y>', 'Show me the money', function() {
 api.map('gt', 'T');
 
 api.map('q', '<Alt-i>')
+api.map(';p', ';s')
 
 settings.scrollStepSize = 200;
 

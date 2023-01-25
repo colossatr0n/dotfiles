@@ -3,6 +3,7 @@ set number
 set timeoutlen=500
 set ignorecase
 set smartcase
+set history=10000
 
 nnoremap <leader>f <C-^>
 
