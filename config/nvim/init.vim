@@ -24,4 +24,6 @@ lua require('nvim-toggleterm')
 lua require('nvim-ripgrep')
 lua require('nvim-fzf')
 lua require('nvim-telescope')
-lua require('nvim-rose-pine')
+if $COLORTERM =~ 'truecolor' || $COLORTERM =~ '24bit'
+    lua require('nvim-rose-pine')
+endif
