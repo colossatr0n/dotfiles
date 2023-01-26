@@ -35,6 +35,7 @@ yabai -m rule --add app="^System Preferences$" manage=off
 yabai -m rule --add app="^IntelliJ IDEA$" manage=off
 yabai -m rule --add title="Preferences" manage=off
 yabai -m rule --add app="GIMP" manage=off
+yabai -m rule --ad app="Word" title="Find and Replace" manage=off
 
 if [[ $USER == 'tarchuletta' ]]; then
     echo "Using work profile."
