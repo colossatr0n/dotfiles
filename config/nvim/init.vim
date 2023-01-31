@@ -12,6 +12,7 @@ source $HOME/dotfiles/config/nvim/vimscript/vim-sneak.vim
 source $HOME/dotfiles/config/nvim/vimscript/nerdtree.vim
 source $HOME/dotfiles/config/nvim/vimscript/vim-maximizer.vim
 source $HOME/dotfiles/config/nvim/vimscript/gitgutter.vim
+source $HOME/dotfiles/config/nvim/vimscript/nvim-markdown.vim
 
 lua require('nvim-neodev')
 lua require('nvim-cmp')

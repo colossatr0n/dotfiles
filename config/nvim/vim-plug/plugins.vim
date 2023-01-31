@@ -54,7 +54,6 @@ call plug#begin('~/dotfiles/config/nvim/autoload/plugged')
     " GIT
     Plug 'airblade/vim-gitgutter'
 
-
     Plug 'preservim/nerdtree'
     Plug 'akinsho/toggleterm.nvim'
     Plug 'jremmen/vim-ripgrep'
@@ -64,6 +63,9 @@ call plug#begin('~/dotfiles/config/nvim/autoload/plugged')
     Plug 'justinmk/vim-sneak'
     Plug 'szw/vim-maximizer'
     Plug 'folke/neodev.nvim'
+
+    " Markdown
+    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
     " Themes
     Plug 'rose-pine/neovim', {'as': 'rose-pine'}
