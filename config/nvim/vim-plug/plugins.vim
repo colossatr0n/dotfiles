@@ -69,6 +69,7 @@ call plug#begin('~/dotfiles/config/nvim/autoload/plugged')
 
     " Themes
     Plug 'rose-pine/neovim', {'as': 'rose-pine'}
+    Plug 'EdenEast/nightfox.nvim'
 
 call plug#end()
 

@@ -26,5 +26,6 @@ lua require('nvim-ripgrep')
 lua require('nvim-fzf')
 lua require('nvim-telescope')
 if $COLORTERM =~ 'truecolor' || $COLORTERM =~ '24bit'
-    lua require('nvim-rose-pine')
+    colorscheme nightfox
+    " lua require('nvim-rose-pine')
 endif

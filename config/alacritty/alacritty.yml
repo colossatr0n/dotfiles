@@ -1,0 +1,6 @@
+import:
+  # Theme
+  -  ~/dotfiles/config/alacritty/nightfox.yml
+font:
+  normal:
+    family: "MesloLGS NF"
