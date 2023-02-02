@@ -61,7 +61,17 @@ doo-a-a-a-ood
 
 See https://vi.stackexchange.com/questions/20704/how-to-run-a-substitute-command-on-only-a-certain-part-of-the-line/20706#20706
 
-# Global Commands
+# Commands
+
+## Command Window
+Enter the command window with `q:`. Here you can edit commands in normal mode.
+
+To execute a command in normal mode, press `Enter`.
+To select it without executing, press `CTRL-c`.
+To exit the command window, press `CRTL-c` twice.
+
+
+## Global Commands
 Global commands start with `:g` and are followed by a regexp and then a command: `:g/regexp/cmd`
 
 ## Yank all lines matching a pattern
