@@ -1,11 +1,15 @@
+########################################
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=${PATH}:/Users/${USER}/Library/Python/3.7/bin
-
 ########################################
 # OH MY ZSH SETUP
 source ~/dotfiles/config/zsh/oh-my-zshrc
-
+########################################
+# CONSOLE BINDINGS
+# This must come after sourcing oh-my-zshrc
+# Set terminal shortcuts to behave like vi
+set -o vi
 ########################################
 # POWERLEVEL 10K
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -19,8 +23,8 @@ fi
 [[ ! -f ~/dotfiles/config/p10k/p10k.zsh ]] || source ~/dotfiles/config/p10k/p10k.zsh
 ########################################
 # FZF
+# This must be sourced after `set -o vi`
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 ###################BEGIN USER CONFIGURATION#####################
 # NOTES
 
@@ -32,10 +36,6 @@ source ~/dotfiles/config/yabai/vars
 # LOCAL CONFIGURATIONS (NON-SHARED)
 # Set up local configurations that shouldn't be shared across machines
 source ~/.zshrc.local
-########################################
-# CONSOLE BINDINGS
-# Set terminal shortcuts to behave like vi
-set -o vi
 ########################################
 # ALIASES
 alias vim='nvim'
