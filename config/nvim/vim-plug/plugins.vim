@@ -65,7 +65,12 @@ call plug#begin('~/dotfiles/config/nvim/autoload/plugged')
     Plug 'folke/neodev.nvim'
 
     " Markdown
-    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+    if executable('yarn') && executable('node')
+        Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' } 
+    else 
+        Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+    endif
+        
 
     " Themes
     Plug 'rose-pine/neovim', {'as': 'rose-pine'}
