@@ -1,7 +1,7 @@
 ########################################
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=${PATH}:/Users/${USER}/Library/Python/3.7/bin
+export PATH=${PATH}:${HOME}/Library/Python/3.7/bin
 ########################################
 # OH MY ZSH SETUP
 source ~/dotfiles/config/zsh/oh-my-zshrc
@@ -31,10 +31,14 @@ fi
 ########################################
 # ENVIRONMENT VARIABLES
 #Set up environment variables
-source ~/dotfiles/config/yabai/vars
+if command -v yabai &> /dev/null
+then
+    source ~/dotfiles/config/yabai/vars
+fi
 ########################################
 # LOCAL CONFIGURATIONS (NON-SHARED)
 # Set up local configurations that shouldn't be shared across machines
+touch ~/.zshrc.local
 source ~/.zshrc.local
 ########################################
 # ALIASES
