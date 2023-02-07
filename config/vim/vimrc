@@ -71,6 +71,7 @@ if !has("ide")
 endif
 
 function! OpenURLUnderCursor()
+  " Change working directory only for current file
   lcd %:p:h
   try
     let s:uri = expand('<cWORD>')
@@ -81,6 +82,7 @@ function! OpenURLUnderCursor()
         " :redraw!
     endif
   finally
+    # Always return to previous working directory.
     lcd -
   endtry
 endfunction
