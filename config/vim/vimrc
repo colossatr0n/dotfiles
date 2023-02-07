@@ -1,3 +1,5 @@
+source ~/dotfiles/config/nvim/vimscript/lsp-keybindings.vim
+
 let mapleader=" "
 set number
 set timeoutlen=500
@@ -27,7 +29,9 @@ nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
 " The following settings are incompatible IdeaVim
 if !has("ide")
     " Go to last used window
-    nnoremap <leader>w <c-w><c-p>
+    " nnoremap <leader>w <c-w><c-p>
+    execute 'nnoremap '.lsp_keybindings['goToPreviousWindow'].' <c-w><c-p>'
+
 
     if &t_Co > 2 || has("gui_running")
     " Switch on highlighting the last used search pattern.
@@ -68,12 +72,13 @@ if !has("ide")
     set updatetime=100
     set termguicolors
     set undofile
+
 endif
 
 function! OpenURLUnderCursor()
-  " Change working directory only for current file
-  lcd %:p:h
-  try
+" Change working directory only for current file
+lcd %:p:h
+try
     let s:uri = expand('<cWORD>')
     let s:uri = substitute(s:uri, '?', '\\?', '')
     let s:uri = shellescape(s:uri, 1)
@@ -81,10 +86,11 @@ function! OpenURLUnderCursor()
         exec "!open '".s:uri."'"
         " :redraw!
     endif
-  finally
+finally
     # Always return to previous working directory.
     lcd -
-  endtry
+endtry
 endfunction
 
 nnoremap gx :call OpenURLUnderCursor()<CR>
+
