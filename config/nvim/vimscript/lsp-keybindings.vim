@@ -6,7 +6,7 @@ let lsp_keybindings = {
             \ 'reformat'               : '<leader>rf',
             \ 'goToImplementation'     : 'gI',
             \ 'signatureHelp'          : '<leader>pi',
-            \ 'goToTypeDefinition'     : 'gt',
+            \ 'goToTypeDefinition'     : 'gty',
             \ 'rename'                 : '<leader>rn',
             \ 'codeAction'             : '<leader>a',
             \ 'finder'                 : '<leader>u',
