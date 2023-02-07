@@ -30,5 +30,13 @@ touch .zshrc.local
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 # Run powerlevel10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-# p10k configure
+```
+
+# Symlinks
+```
+ln -s ~/dotfiles/config/zsh ~/.config/
+ln -s ~/dotfiles/config/nvim ~/.config/
+ln -s ~/dotfiles/config/vim ~/.config/
+ln -s ~/dotfiles/config/p10k ~/.config/
+ln -s ~/dotfiles/config/surfingkeys ~/.config/
 ```
