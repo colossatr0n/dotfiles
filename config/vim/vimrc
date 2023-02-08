@@ -76,20 +76,20 @@ if !has("ide")
 endif
 
 function! OpenURLUnderCursor()
-" Change working directory only for current file
-lcd %:p:h
-try
-    let s:uri = expand('<cWORD>')
-    let s:uri = substitute(s:uri, '?', '\\?', '')
-    let s:uri = shellescape(s:uri, 1)
-    if s:uri != ''
-        exec "!open '".s:uri."'"
-        " :redraw!
-    endif
-finally
-    # Always return to previous working directory.
-    lcd -
-endtry
+    " Change working directory only for current file
+    lcd %:p:h
+    try
+        let s:uri = expand('<cWORD>')
+        let s:uri = substitute(s:uri, '?', '\\?', '')
+        let s:uri = shellescape(s:uri, 1)
+        if s:uri != ''
+            exec "!open '".s:uri."'"
+            " :redraw!
+        endif
+    finally
+        " Always return to previous working directory.
+        lcd -
+    endtry
 endfunction
 
 nnoremap gx :call OpenURLUnderCursor()<CR>

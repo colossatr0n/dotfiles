@@ -27,7 +27,7 @@ let lsp_keybindings = {
             \ 'goToPreviousWindow'     : '<leader>w', 
             \ 'searchForFile'          : '<leader>sf', 
             \ 'searchDocumentSymbols'  : '<leader>ds', 
-            \ 'searchWorkspaceSymbols' : '<leader>ws', 
+            \ 'searchWorkspaceSymbols' : '<leader>ws',
 \}
 
 " Set to global so that lua scripts can access it (vim.g.someGlobalVar)
