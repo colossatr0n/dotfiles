@@ -31,6 +31,7 @@ execute 'map '.lsp_keybindings['searchForFile'].          ' <Action>(GotoFile)'
 " execute 'map '.lsp_keybindings['searchWorkspaceSymbols']. ' <Action>(GotoSymbol)'
 execute 'map '.lsp_keybindings['goToPreviousWindow'].     ' <Action>(NextSplitter)'
 execute 'map '.lsp_keybindings['searchDocumentSymbols'].  ' <Action>(FileStructurePopup)'
+execute 'map '.lsp_keybindings['searchForWord'].          ' <Action>(FindInPath)'
 
 " Other mappings
 nmap <C-o> <Action>(Back)

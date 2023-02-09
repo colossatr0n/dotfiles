@@ -28,6 +28,7 @@ let lsp_keybindings = {
             \ 'searchForFile'          : '<leader>sf', 
             \ 'searchDocumentSymbols'  : '<leader>ds', 
             \ 'searchWorkspaceSymbols' : '<leader>ws',
+            \ 'searchForWord'          : '<leader>sw',
 \}
 
 " Set to global so that lua scripts can access it (vim.g.someGlobalVar)
