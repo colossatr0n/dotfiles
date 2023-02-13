@@ -10,7 +10,7 @@ set relativenumber
 let g:markdown_fenced_languages = ['json']
 
 " Go back to previous file
-nnoremap <leader>f <C-^>
+nnoremap <leader>f <c-6>
 " Put search result in center of display
 nnoremap n nzz
 nnoremap N Nzz
