@@ -39,10 +39,13 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', vim.g.lsp_keybindings['reformat'],                  '<cmd>lua vim.lsp.buf.format({ async = true })<CR>', opts)
   buf_set_keymap('n', vim.g.lsp_keybindings['references'],                '<cmd>lua require("telescope.builtin").lsp_references()<CR>', opts)
   buf_set_keymap('n', vim.g.lsp_keybindings['goToImplementation'],        '<cmd>lua require("telescope.builtin").lsp_implementations()<CR>', opts)
+
+  buf_set_keymap('n', vim.g.lsp_keybindings['searchDocumentSymbols'],        '<cmd>require("telescope.builtin").lsp_document_symbols()<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['searchWorkspaceSymbols'],        '<cmd>require("telescope.builtin").lsp_dynamic_workspace_symbols()<CR>', opts)
   -- Search document symbols
-  buf_set_keymap('n', '<leader>ds',                                       '<cmd>require("telescope.builtin").lsp_document_symbols()<CR>', opts)
+  -- buf_set_keymap('n', '<leader>ds',                                       '<cmd>require("telescope.builtin").lsp_document_symbols()<CR>', opts)
   -- Search workspace symbols
-  buf_set_keymap('n', '<leader>ws',                                       '<cmd>require("telescope.builtin").lsp_dynamic_workspace_symbols()<CR>', opts)
+  -- buf_set_keymap('n', '<leader>ws',                                       '<cmd>require("telescope.builtin").lsp_dynamic_workspace_symbols()<CR>', opts)
   buf_set_keymap('n', vim.g.lsp_keybindings['addWorkspaceFolder'],        '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   buf_set_keymap('n', vim.g.lsp_keybindings['removeWorkspaceFolder'],     '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   buf_set_keymap('n', vim.g.lsp_keybindings['showWorkspaceFolders'],      '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)

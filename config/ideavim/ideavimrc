@@ -1,3 +1,4 @@
+mapclear
 source ~/dotfiles/config/vim/vimrc
 source ~/dotfiles/config/nvim/vimscript/lsp-keybindings.vim
 
@@ -7,25 +8,30 @@ source ~/dotfiles/config/nvim/vimscript/nerdtree.vim
 set commentary
 set highlightedyank
 set matchit
-set smartcase
 
 " Uses LSP keybindings.
-execute 'map '.lsp_keybindings['rename'].               ' <Action>(RenameElement)'
-execute 'map '.lsp_keybindings['previewDefinition'].    ' <Action>(QuickImplementations)'
-execute 'map '.lsp_keybindings['goToImplementation'].   ' <Action>(GotoImplementation)'
-execute 'map '.lsp_keybindings['signatureHelp'].        ' <Action>(ParameterInfo)'
-execute 'map '.lsp_keybindings['goToTypeDefinition'].   ' <Action>(GotoTypeDeclaration)'
-execute 'map '.lsp_keybindings['codeAction'].           ' <Action>(ShowIntentionActions)'
-execute 'map '.lsp_keybindings['references'].           ' <Action>(FindUsages)'
-execute 'map '.lsp_keybindings['showErrorDescription']. ' <Action>(ShowErrorDescription)'
-execute 'map '.lsp_keybindings['reformat'].             ' <Action>(ReformatCode)'
-execute 'map '.lsp_keybindings['showErrorWindow'].      ' <Action>(ActivateProblemsViewToolWindow)'
-execute 'map '.lsp_keybindings['goToNextError'].        ' <Action>(GotoNextError)'
-execute 'map '.lsp_keybindings['goToPreviousError'].    ' <Action>(GotoPreviousError)'
-execute 'map '.lsp_keybindings['goToDefinition'].       ' <Action>(GotoDeclaration)'
-execute 'map '.lsp_keybindings['hoverDoc'].             ' <Action>(QuickJavaDoc)'
+execute 'map '.lsp_keybindings['rename'].                 ' <Action>(RenameElement)'
+execute 'map '.lsp_keybindings['previewDefinition'].      ' <Action>(QuickImplementations)'
+execute 'map '.lsp_keybindings['goToImplementation'].     ' <Action>(GotoImplementation)'
+execute 'map '.lsp_keybindings['signatureHelp'].          ' <Action>(ParameterInfo)'
+execute 'map '.lsp_keybindings['goToTypeDefinition'].     ' <Action>(GotoTypeDeclaration)'
+execute 'map '.lsp_keybindings['codeAction'].             ' <Action>(ShowIntentionActions)'
+execute 'map '.lsp_keybindings['references'].             ' <Action>(FindUsages)'
+execute 'map '.lsp_keybindings['showErrorDescription'].   ' <Action>(ShowErrorDescription)'
+execute 'map '.lsp_keybindings['reformat'].               ' <Action>(ReformatCode)'
+execute 'map '.lsp_keybindings['showErrorWindow'].        ' <Action>(ActivateProblemsViewToolWindow)'
+execute 'map '.lsp_keybindings['goToNextError'].          ' <Action>(GotoNextError)'
+execute 'map '.lsp_keybindings['goToPreviousError'].      ' <Action>(GotoPreviousError)'
+execute 'map '.lsp_keybindings['goToDefinition'].         ' <Action>(GotoDeclaration)'
+execute 'map '.lsp_keybindings['hoverDoc'].               ' <Action>(QuickJavaDoc)'
 
-map <leader>w <Action>(NextSplitter)
+execute 'map '.lsp_keybindings['searchForFile'].          ' <Action>(GotoFile)'
+" IdeaVim can't handle bindings that contain other bindings. Looks like it's a
+" timing problem. e.g., <leader>w and <leader>ws leaves <leader>w useless.
+" execute 'map '.lsp_keybindings['searchWorkspaceSymbols']. ' <Action>(GotoSymbol)'
+execute 'map '.lsp_keybindings['goToPreviousWindow'].     ' <Action>(NextSplitter)'
+execute 'map '.lsp_keybindings['searchDocumentSymbols'].  ' <Action>(FileStructurePopup)'
+execute 'map '.lsp_keybindings['searchForWord'].          ' <Action>(FindInPath)'
 
 " Other mappings
 nmap <C-o> <Action>(Back)
@@ -47,9 +53,6 @@ nmap <leader>hp <Action>(VcsShowCurrentChangeMarker)
 " Similar to vim-maximize plugin
 map <C-w>m <Action>(MaximizeEditorInSplit)
 
-" Ensure this matches my custom fzf mappings
-map <leader>o <Action>(GotoFile)
-
 " Manually simulating vim-sneak with labels
-nmap s <Action>(AceForwardAction)
-nmap S <Action>(AceBackwardAction)
+" nmap s <Action>(AceForwardAction)
+" nmap S <Action>(AceBackwardAction)

@@ -4,3 +4,7 @@ import:
 font:
   normal:
     family: "MesloLGS NF"
+
+key_bindings:
+  # Groups multiple alacritty instances under a single dock icon
+- { key: N,     mods: Command,  action: CreateNewWindow }

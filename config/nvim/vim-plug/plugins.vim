@@ -70,7 +70,6 @@ call plug#begin('~/dotfiles/config/nvim/autoload/plugged')
     else 
         Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
     endif
-        
 
     " Themes
     Plug 'rose-pine/neovim', {'as': 'rose-pine'}
