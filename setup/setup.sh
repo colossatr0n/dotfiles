@@ -35,6 +35,7 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 # Symlinks
 ```
 ln -s ~/dotfiles/config/zsh ~/.config/
+ln -s ~/dotfiles/config/zsh/zshrc ~/.zshrc
 ln -s ~/dotfiles/config/nvim ~/.config/
 ln -s ~/dotfiles/config/vim ~/.config/
 ln -s ~/dotfiles/config/p10k ~/.config/
