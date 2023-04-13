@@ -29,3 +29,19 @@ if $COLORTERM =~ 'truecolor' || $COLORTERM =~ '24bit'
     colorscheme nightfox
     " lua require('nvim-rose-pine')
 endif
+
+" Background colors for active vs inactive windows
+hi InactiveWindow guibg=#0D1B22
+
+" Call method on window enter
+augroup WindowManagement
+  autocmd!
+  autocmd WinEnter * call Handle_Win_Enter()
+  autocmd WinLeave * call Handle_Win_Enter()
+  " autocmd WinNew * call Handle_Win_Enter()
+augroup END
+
+" Change highlight group of active/inactive windows
+function! Handle_Win_Enter()
+  setlocal winhighlight=NormalNC:InactiveWindow
+endfunction
