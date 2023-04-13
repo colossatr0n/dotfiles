@@ -19,6 +19,11 @@ nnoremap N Nzz
 nnoremap Y "+y
 vnoremap Y "+y
 
+" Sets session options. Ensures vimrc is reloaded properly when reloading a
+" session.
+set ssop-=options    " do not store global and local values in a session
+set ssop-=folds      " do not store folds
+
 " Remap for dealing with word wrap
 "ideaVim ignore
 nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
