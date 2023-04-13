@@ -37,6 +37,7 @@ yabai -m rule --add title="Preferences" manage=off
 yabai -m rule --add app="GIMP" manage=off
 yabai -m rule --add app="Word" title="Find and Replace" manage=off
 yabai -m rule --add app="Microsoft Remote Desktop" manage=off
+yabai -m rule --add app="Python" manage=off
 
 if [[ $USER == 'tarchuletta' ]]; then
     echo "Using work profile."
