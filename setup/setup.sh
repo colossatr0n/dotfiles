@@ -1,5 +1,5 @@
-# Linux
-## Neovim
+# Neovim
+## Linux
 Ensure available nvim version is > 0.8.0
 ```
 apt list neovim
@@ -20,16 +20,55 @@ sudo apt purge neovim
 sudo apt purge neovim-runtime
 ```
 
-## Zsh
+## MacOS
 ```
-# Install zsh
+brew install neovim
+```
+
+# Zsh
+## Linux
+
+```
 cd ~
 sudo apt install zsh
 touch .zshrc.local
+
 # Install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 # Run powerlevel10k
+
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+```
+
+# Node/NPM
+## MacOS
+```
+brew install node
+```
+
+# FZF
+## MacOS
+```
+brew install fzf
+
+# To install useful key bindings and fuzzy completion:
+$(brew --prefix)/opt/fzf/install
+```
+
+## Linux
+```
+sudo apt install fzf
+```
+
+# RipGrep
+## MacOS
+```
+brew install ripgrep
+```
+
+## Linux
+```
+sudo apt-get install ripgrep
 ```
 
 # Symlinks
@@ -41,3 +80,6 @@ ln -s ~/dotfiles/config/vim ~/.config/
 ln -s ~/dotfiles/config/p10k ~/.config/
 ln -s ~/dotfiles/config/surfingkeys ~/.config/
 ```
+
+# NVim Setup
+After installing neovim and running the symlinks section above, open nvim, you'll probably see a bunch of errors, ignore them and run `:PlugInstall`
