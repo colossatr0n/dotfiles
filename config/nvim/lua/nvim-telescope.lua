@@ -50,7 +50,7 @@ end, { desc = '[/] Fuzzily search in current buffer]' })
 
 vim.keymap.set('n', vim.g.lsp_keybindings['searchForFile'],  require('telescope.builtin').find_files,  { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sh',  require('telescope.builtin').help_tags,   { desc = '[S]earch [H]elp' })
-vim.keymap.set('n', '<leader>scw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
+vim.keymap.set('n', '<leader>scw', require('telescope.builtin').grep_string, { desc = '[S]earch [C]urrent [W]ord' })
 vim.keymap.set('n', vim.g.lsp_keybindings['searchForWord'],
     require('telescope.builtin').live_grep,                                  { desc = '[S]earch for [W]ord (ripgrep)' })
 vim.keymap.set('n', '<leader>sbw', function() 
