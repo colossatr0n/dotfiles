@@ -95,3 +95,6 @@ alt - f         : yabai -m window --toggle zoom-fullscreen
 
 # Balance windows
 alt - b : yabai -m space --balance
+
+# OTHER APPLICATIONS
+cmd + lctrl - a : /Applications/Alacritty.app/Contents/MacOS/alacritty msg create-window

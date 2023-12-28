@@ -29,7 +29,12 @@ let lsp_keybindings = {
             \ 'searchDocumentSymbols'  : '<leader>ds', 
             \ 'searchWorkspaceSymbols' : '<leader>ws',
             \ 'searchForWord'          : '<leader>sw',
+            \
+            \ 'explorerOpen'           : '<leader>eo',
+            \ 'explorerClose'          : '<leader>ec',
+            \ 'explorerFind'           : '<leader>ef',
 \}
+
 
 " Set to global so that lua scripts can access it (vim.g.someGlobalVar)
 let g:lsp_keybindings = lsp_keybindings

@@ -43,6 +43,7 @@ source ~/.zshrc.local
 ########################################
 # ALIASES
 alias vim='nvim'
+alias cdd='cd ~/dotfiles'
 
 export COLORTERM="truecolor"
 # export BAT_THEME='Coldark-Dark'
