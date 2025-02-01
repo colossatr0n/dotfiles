@@ -29,3 +29,7 @@ execute 'nnoremap '.lsp_keybindings['previewChange'].          ' <cmd>lua requir
 
 " Similar to vim-maximize plugin
 execute 'noremap '.lsp_keybindings['maximizeWindow'].          ' <cmd>lua require(''vscode'').action(''workbench.action.toggleMaximizeEditorGroup'')<CR>'
+
+execute 'noremap '.lsp_keybindings['explorerOpen'].          ' <cmd>lua require(''vscode'').action(''workbench.files.action.focusFilesExplorer'')<CR>'
+execute 'noremap '.lsp_keybindings['explorerClose'].          ' <cmd>lua require(''vscode'').action(''workbench.action.closeSidebar'')<CR>'
+execute 'noremap '.lsp_keybindings['explorerFind'].          ' <cmd>lua require(''vscode'').action(''workbench.files.action.showActiveFileInExplorer'')<CR>'
