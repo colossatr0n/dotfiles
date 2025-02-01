@@ -1,3 +1,5 @@
+-- LSP Config Setup: https://github.com/neovim/nvim-lspconfig
+
 local nvim_lsp = require('lspconfig')
 local HOME = os.getenv("HOME")
 vim.cmd('source ~/dotfiles/config/nvim/vimscript/lsp-keybindings.vim')
@@ -29,7 +31,8 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', vim.g.lsp_keybindings['showWorkspaceFolders'],      '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   buf_set_keymap('n', vim.g.lsp_keybindings['goToTypeDefinition'],        '<cmd>lua require("telescope.builtin").lsp_type_definitions()<CR>', opts)
   buf_set_keymap('n', vim.g.lsp_keybindings['rename'],                    '<cmd>Lspsaga rename<CR>', opts)
-  buf_set_keymap('n', vim.g.lsp_keybindings['codeAction'],                '<cmd>Lspsaga code_action<CR>', opts)
+  -- buf_set_keymap('n', vim.g.lsp_keybindings['codeAction'],                '<cmd>Lspsaga code_action<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['codeAction'],                '<cmd>lua vim.lsp.buf.code_action({apply=true})<CR>', opts)
   buf_set_keymap('n', vim.g.lsp_keybindings['showErrorDescription'],      '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
   buf_set_keymap('n', vim.g.lsp_keybindings['goToPreviousDiagnostic'],    '<cmd>Lspsaga diagnostic_jump_prev<CR>', opts)
   buf_set_keymap('n', vim.g.lsp_keybindings['goToNextDiagnostic'],        '<cmd>Lspsaga diagnostic_jump_next<CR>', opts)
@@ -40,8 +43,8 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', vim.g.lsp_keybindings['references'],                '<cmd>lua require("telescope.builtin").lsp_references()<CR>', opts)
   buf_set_keymap('n', vim.g.lsp_keybindings['goToImplementation'],        '<cmd>lua require("telescope.builtin").lsp_implementations()<CR>', opts)
 
-  buf_set_keymap('n', vim.g.lsp_keybindings['searchDocumentSymbols'],        '<cmd>require("telescope.builtin").lsp_document_symbols()<CR>', opts)
-  buf_set_keymap('n', vim.g.lsp_keybindings['searchWorkspaceSymbols'],        '<cmd>require("telescope.builtin").lsp_dynamic_workspace_symbols()<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['searchDocumentSymbols'],        '<cmd>lua require("telescope.builtin").lsp_document_symbols()<CR>', opts)
+  buf_set_keymap('n', vim.g.lsp_keybindings['searchWorkspaceSymbols'],        '<cmd>lua require("telescope.builtin").lsp_dynamic_workspace_symbols()<CR>', opts)
   -- Search document symbols
   -- buf_set_keymap('n', '<leader>ds',                                       '<cmd>require("telescope.builtin").lsp_document_symbols()<CR>', opts)
   -- Search workspace symbols
@@ -80,7 +83,7 @@ local servers = {
             }
         }
     },
-    tsserver = {}, 
+    ts_ls = {},
     angularls = {},
     html = {},
     vuels = {},
@@ -95,7 +98,8 @@ local servers = {
     },
     clangd = {
         cmd = { "/usr/local/opt/llvm/bin/clangd" },
-    }
+    },
+    phpactor = {}
 }
 
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
