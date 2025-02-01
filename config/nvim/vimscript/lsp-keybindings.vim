@@ -33,6 +33,13 @@ let lsp_keybindings = {
             \ 'explorerOpen'           : '<leader>eo',
             \ 'explorerClose'          : '<leader>ec',
             \ 'explorerFind'           : '<leader>ef',
+            \
+            \ 'previousChange'         : '[c',
+            \ 'nextChange'             : ']c',
+            \ 'revertChange'           : '<leader>hu',
+            \ 'previewChange'          : '<leader>hp',
+            \
+            \ 'maximizeWindow'         : '<c-w>m',
 \}
 
 

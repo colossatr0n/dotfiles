@@ -1,0 +1,31 @@
+" mapclear
+source ~/dotfiles/config/nvim/vimscript/lsp-keybindings.vim
+
+" Uses LSP keybindings.
+execute 'nnoremap '.lsp_keybindings['previewDefinition'].      ' <cmd>lua require(''vscode'').action(''editor.action.showDefinitionPreviewHover'')<CR>'
+execute 'nnoremap '.lsp_keybindings['goToImplementation'].     ' <cmd>lua require(''vscode'').action(''editor.action.goToImplementation'')<CR>'
+execute 'nnoremap '.lsp_keybindings['signatureHelp'].          ' <cmd>lua require(''vscode'').action(''editor.action.triggerParameterHints'')<CR>'
+execute 'nnoremap '.lsp_keybindings['goToTypeDefinition'].     ' <cmd>lua require(''vscode'').action(''editor.action.goToTypeDefinition'')<CR>'
+execute 'nnoremap '.lsp_keybindings['codeAction'].             ' <cmd>lua require(''vscode'').action(''editor.action.codeAction'')<CR>'
+execute 'nnoremap '.lsp_keybindings['references'].             ' <cmd>lua require(''vscode'').action(''editor.action.referenceSearch.trigger'')<CR>'
+execute 'nnoremap '.lsp_keybindings['showErrorDescription'].   ' <cmd>lua require(''vscode'').action(''editor.action.showHover'')<CR>'
+execute 'nnoremap '.lsp_keybindings['reformat'].               ' <cmd>lua require(''vscode'').action(''editor.action.formatDocument'')<CR>'
+execute 'nnoremap '.lsp_keybindings['showErrorWindow'].        ' <cmd>lua require(''vscode'').action(''workbench.action.problems.focus'')<CR>'
+execute 'nnoremap '.lsp_keybindings['goToNextError'].          ' <cmd>lua require(''vscode'').action(''editor.action.marker.next'')<CR>'
+execute 'nnoremap '.lsp_keybindings['goToPreviousError'].      ' <cmd>lua require(''vscode'').action(''editor.action.marker.prev'')<CR>'
+execute 'nnoremap '.lsp_keybindings['goToDefinition'].         ' <cmd>lua require(''vscode'').action(''editor.action.revealDefinition'')<CR>'
+execute 'nnoremap '.lsp_keybindings['hoverDoc'].               ' <cmd>lua require(''vscode'').action(''editor.action.showHover'')<CR>'
+execute 'nnoremap '.lsp_keybindings['searchForFile'].          ' <cmd>lua require(''vscode'').action(''workbench.action.quickOpen'')<CR>'
+execute 'nnoremap '.lsp_keybindings['searchWorkspaceSymbols']. ' <cmd>lua require(''vscode'').action(''workbench.action.gotoSymbol'')<CR>'
+execute 'nnoremap '.lsp_keybindings['goToPreviousWindow'].     ' <cmd>lua require(''vscode'').action(''workbench.action.previousEditor'')<CR>'
+execute 'nnoremap '.lsp_keybindings['searchDocumentSymbols'].  ' <cmd>lua require(''vscode'').action(''workbench.action.gotoSymbol'')<CR>'
+execute 'nnoremap '.lsp_keybindings['searchForWord'].          ' <cmd>lua require(''vscode'').action(''workbench.action.findInFiles'', { args = { query = vim.fn.expand(''<cword>'') } })<CR>'
+
+" These should match git gutter bindings
+execute 'nnoremap '.lsp_keybindings['previousChange'].          ' <cmd>lua require(''vscode'').action(''workbench.action.editor.previousChange'')<CR>'
+execute 'nnoremap '.lsp_keybindings['nextChange'].          ' <cmd>lua require(''vscode'').action(''workbench.action.editor.nextChange'')<CR>'
+execute 'nnoremap '.lsp_keybindings['revertChange'].          ' <cmd>lua require(''vscode'').action(''git.revertSelectedRanges'')<CR>'
+execute 'nnoremap '.lsp_keybindings['previewChange'].          ' <cmd>lua require(''vscode'').action(''editor.action.dirtydiff.next'')<CR>'
+
+" Similar to vim-maximize plugin
+execute 'noremap '.lsp_keybindings['maximizeWindow'].          ' <cmd>lua require(''vscode'').action(''workbench.action.toggleMaximizeEditorGroup'')<CR>'

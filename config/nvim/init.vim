@@ -14,17 +14,23 @@ source $HOME/dotfiles/config/nvim/vimscript/vim-maximizer.vim
 source $HOME/dotfiles/config/nvim/vimscript/gitgutter.vim
 source $HOME/dotfiles/config/nvim/vimscript/nvim-markdown.vim
 
-lua require('nvim-neodev')
-lua require('nvim-cmp')
-lua require('nvim-mason')
-lua require('nvim-mason-lspconfig')
-lua require('nvim-lspconfig')
-lua require('nvim-lspsaga')
+if !exists('g:vscode')
+    lua require('nvim-neodev')
+    lua require('nvim-cmp')
+    lua require('nvim-mason')
+    lua require('nvim-mason-lspconfig')
+    lua require('nvim-lspconfig')
+    lua require('nvim-lspsaga')
 
-lua require('nvim-toggleterm')
-lua require('nvim-ripgrep')
-lua require('nvim-fzf')
-lua require('nvim-telescope')
+    lua require('nvim-toggleterm')
+    lua require('nvim-ripgrep')
+    lua require('nvim-fzf')
+    lua require('nvim-telescope')
+else
+    source $HOME/dotfiles/config/vscode/vscodevimrc.vim
+endif
+
+
 if $COLORTERM =~ 'truecolor' || $COLORTERM =~ '24bit'
     colorscheme nightfox
     " lua require('nvim-rose-pine')
