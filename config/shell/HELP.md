@@ -51,6 +51,11 @@ Keep onlhy pages 1-9 and 26 till end of pdf.
 pdftk input.pdf cat 1-9 26-end output output.pdf
 ```
 
+## Grep a PDF
+```
+pdftotext my.pdf - | grep 'pattern'
+```
+
 # Network
 ## cURL
 ### Get final status code after redirects
