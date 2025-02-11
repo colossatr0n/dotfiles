@@ -41,7 +41,7 @@ call plug#begin('~/dotfiles/config/nvim/autoload/plugged')
 
     " Telescope
     Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
+    Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
     if executable('make')
         Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
     elseif executable('cmake')
@@ -53,6 +53,7 @@ call plug#begin('~/dotfiles/config/nvim/autoload/plugged')
     
     " GIT
     Plug 'airblade/vim-gitgutter'
+    Plug 'tpope/vim-fugitive'
 
     Plug 'preservim/nerdtree'
     Plug 'akinsho/toggleterm.nvim'
