@@ -39,8 +39,10 @@ yabai -m rule --add app="Inkscape" manage=off
 yabai -m rule --add app="Word" title="Find and Replace" manage=off
 yabai -m rule --add app="Microsoft Remote Desktop" manage=off
 yabai -m rule --add app="Python" manage=off
+yabai -m rule --add app="Blender" manage=off
+yabai -m rule --add app="Ultimaker Cura" manage=off
 
-if [[ $USER == 'tarchuletta' ]]; then
+if [[ $USER == 'workstation' ]]; then
     echo "Using work profile."
     yabai -m signal --add \
 	event=application_activated \
