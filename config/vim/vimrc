@@ -10,7 +10,8 @@ set relativenumber
 let g:markdown_fenced_languages = ['json', 'python']
 
 " Go back to previous file
-nnoremap <leader>f <c-6>
+" execute 'nnoremap '.lsp_keybindings['quickSwitch'].'  <c-6>'
+
 " Put search result in center of display
 nnoremap n nzz
 nnoremap N Nzz
@@ -33,6 +34,9 @@ nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
 
 " The following settings are incompatible with IdeaVim
 if !has("ide")
+    " Go back to previous file
+    execute 'nmap '.lsp_keybindings['quickSwitch'].' <c-6>'
+
     " Go to last used window
     " nnoremap <leader>w <c-w><c-p>
     execute 'nnoremap '.lsp_keybindings['goToPreviousWindow'].' <c-w><c-p>'
@@ -49,9 +53,9 @@ if !has("ide")
     " compatible.
     " The ! means the package won't be loaded right away but when plugins are
     " loaded during initialization.
-    if has('syntax') && has('eval')
-        packadd! matchit
-    endif
+    " if has('syntax') && has('eval')
+    "     packadd! matchit
+    " endif
 
     set backspace=indent,eol,start
     " see for yourself
