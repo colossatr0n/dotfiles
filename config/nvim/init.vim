@@ -2,7 +2,9 @@ source $HOME/dotfiles/config/vim/vimrc
 
 " nvim booleans
 set inccommand=split
+
 set termguicolors
+
 
 " Load plugins
 source $HOME/dotfiles/config/nvim/vim-plug/plugins.vim
@@ -14,22 +16,17 @@ source $HOME/dotfiles/config/nvim/vimscript/vim-maximizer.vim
 source $HOME/dotfiles/config/nvim/vimscript/gitgutter.vim
 source $HOME/dotfiles/config/nvim/vimscript/nvim-markdown.vim
 
-if !exists('g:vscode')
-    lua require('nvim-neodev')
-    lua require('nvim-cmp')
-    lua require('nvim-mason')
-    lua require('nvim-mason-lspconfig')
-    lua require('nvim-lspconfig')
-    lua require('nvim-lspsaga')
+lua require('nvim-neodev')
+lua require('nvim-cmp')
+lua require('nvim-mason')
+lua require('nvim-mason-lspconfig')
+lua require('nvim-lspsaga')
+lua require('nvim-lspconfig')
 
-    lua require('nvim-toggleterm')
-    lua require('nvim-ripgrep')
-    lua require('nvim-fzf')
-    lua require('nvim-telescope')
-else
-    source $HOME/dotfiles/config/vscode/vscodevimrc.vim
-endif
-
+lua require('nvim-toggleterm')
+lua require('nvim-ripgrep')
+lua require('nvim-fzf')
+lua require('nvim-telescope')
 
 if $COLORTERM =~ 'truecolor' || $COLORTERM =~ '24bit'
     colorscheme nightfox
