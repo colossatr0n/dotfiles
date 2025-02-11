@@ -25,9 +25,9 @@ let lsp_keybindings = {
             \ 'removeWorkspaceFolder'  : '<leader>wr',
             \ 'showWorkspaceFolders'   : '<leader>wl', 
             \ 'goToPreviousWindow'     : '<leader>w', 
-            \ 'searchForFile'          : '<leader>sf', 
-            \ 'searchDocumentSymbols'  : '<leader>ds', 
-            \ 'searchWorkspaceSymbols' : '<leader>ws',
+            \ 'searchForFile'          : '<leader>o', 
+            \ 'searchDocumentSymbols'  : '<leader>sd', 
+            \ 'searchWorkspaceSymbols' : '<leader>ss',
             \ 'searchForWord'          : '<leader>sw',
             \
             \ 'explorerOpen'           : '<leader>eo',
@@ -38,6 +38,8 @@ let lsp_keybindings = {
             \ 'nextChange'             : ']c',
             \ 'revertChange'           : '<leader>hu',
             \ 'previewChange'          : '<leader>hp',
+            \
+            \ 'quickSwitch'            : '<leader>f',
             \
             \ 'maximizeWindow'         : '<c-w>m',
 \}
