@@ -35,15 +35,32 @@ if command -v yabai &> /dev/null
 then
     source ~/dotfiles/config/yabai/vars
 fi
+
+export COLORTERM="truecolor"
+# export BAT_THEME='Coldark-Dark'
+#
+########################################
+# ALIASES
+alias vim='nvim'
+alias cdd='cd ~/dotfiles'
+alias cdc='cd ~/code'
+alias angularjslines='git ls-files | grep -v dist | grep ".js"  | xargs wc -l'
+
+########################################
+# FUNCTIONS
+ql() {
+  local type=$(mdls -name kMDItemContentType $argv[1] | sed -n 's/^kMDItemContentType = \"\(.*\)\"$/\1/p')
+  echo $type
+  plutil -insert CFBundleDocumentTypes.0.LSItemContentTypes.0 -string $type ~/Library/QuickLook/QLStephen.qlgenerator/Contents/Info.plist
+  qlmanage -r
+}
+
 ########################################
 # LOCAL CONFIGURATIONS (NON-SHARED)
 # Set up local configurations that shouldn't be shared across machines
 touch ~/.zshrc.local
 source ~/.zshrc.local
-########################################
-# ALIASES
-alias vim='nvim'
-alias cdd='cd ~/dotfiles'
 
-export COLORTERM="truecolor"
-# export BAT_THEME='Coldark-Dark'
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
