@@ -7,10 +7,13 @@ set ignorecase
 set smartcase
 set history=10000
 set relativenumber
+set incsearch
+set hls
 let g:markdown_fenced_languages = ['json', 'python']
-
-" Go back to previous file
-" execute 'nnoremap '.lsp_keybindings['quickSwitch'].'  <c-6>'
+if &t_Co > 2 || has("gui_running")
+" Switch on highlighting the last used search pattern.
+    set hlsearch
+endif
 
 " Put search result in center of display
 nnoremap n nzz
@@ -19,6 +22,10 @@ nnoremap N Nzz
 " Copy to clipboard
 nnoremap Y "+y
 vnoremap Y "+y
+
+" Clears search highlights when enter is pressed.
+nnoremap <silent> <CR> :noh<CR>
+
 
 " Sets session options. Ensures vimrc is reloaded properly when reloading a
 " session.
@@ -31,21 +38,16 @@ nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
 nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
 "ideaVim ignore end
 
+" Go back to previous file
+execute 'nmap '.lsp_keybindings['quickSwitch'].' <c-6>'
+execute 'nmap '.lsp_keybindings['recentFiles'].' :History<CR>'
 
 " The following settings are incompatible with IdeaVim
 if !has("ide")
-    " Go back to previous file
-    execute 'nmap '.lsp_keybindings['quickSwitch'].' <c-6>'
-
     " Go to last used window
     " nnoremap <leader>w <c-w><c-p>
     execute 'nnoremap '.lsp_keybindings['goToPreviousWindow'].' <c-w><c-p>'
 
-
-    if &t_Co > 2 || has("gui_running")
-    " Switch on highlighting the last used search pattern.
-        set hlsearch
-    endif
 
     " Add optional packages.
     "

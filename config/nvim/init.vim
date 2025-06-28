@@ -10,7 +10,7 @@ set termguicolors
 source $HOME/dotfiles/config/nvim/vim-plug/plugins.vim
 
 " Load plugin configurations
-source $HOME/dotfiles/config/nvim/vimscript/vim-sneak.vim
+" source $HOME/dotfiles/config/nvim/vimscript/vim-sneak.vim
 source $HOME/dotfiles/config/nvim/vimscript/nerdtree.vim
 source $HOME/dotfiles/config/nvim/vimscript/vim-maximizer.vim
 source $HOME/dotfiles/config/nvim/vimscript/gitgutter.vim

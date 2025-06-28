@@ -72,3 +72,9 @@ grep -vFf input1 input2
 
 
 [More info](https://stackoverflow.com/questions/24324350/how-to-remove-common-lines-between-two-files-without-sorting)
+
+## Git
+Search git history for a specific change and show diffs:
+```
+git log -S searchterm -p
+```

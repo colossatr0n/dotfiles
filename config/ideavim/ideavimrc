@@ -26,12 +26,17 @@ execute 'map '.lsp_keybindings['goToDefinition'].         ' <Action>(GotoDeclara
 execute 'map '.lsp_keybindings['hoverDoc'].               ' <Action>(QuickJavaDoc)'
 
 execute 'map '.lsp_keybindings['searchForFile'].          ' <Action>(GotoFile)'
-" IdeaVim can't handle bindings that contain other bindings. Looks like it's a
-" timing problem. e.g., <leader>w and <leader>ws leaves <leader>w useless.
-" execute 'map '.lsp_keybindings['searchWorkspaceSymbols']. ' <Action>(GotoSymbol)'
+execute 'map '.lsp_keybindings['searchWorkspaceSymbols']. ' <Action>(GotoSymbol)'
+
+execute 'map '.lsp_keybindings['explorerOpen'].     ' <Action>(ActivateProjectToolWindow)'
+execute 'map '.lsp_keybindings['explorerClose'].     ' <Action>(HideActiveWindow)'
+execute 'map '.lsp_keybindings['explorerFind'].     ' <Action>(SelectInProjectView)'
+
 execute 'map '.lsp_keybindings['goToPreviousWindow'].     ' <Action>(NextSplitter)'
 execute 'map '.lsp_keybindings['searchDocumentSymbols'].  ' <Action>(FileStructurePopup)'
 execute 'map '.lsp_keybindings['searchForWord'].          ' <Action>(FindInPath)'
+
+execute 'map '.lsp_keybindings['recentFiles'].          ' <Action>(RecentFiles)'
 
 " Other mappings
 nmap <C-o> <Action>(Back)

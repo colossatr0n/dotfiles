@@ -18,7 +18,16 @@ execute 'nnoremap '.lsp_keybindings['goToDefinition'].         ' <cmd>lua requir
 execute 'nnoremap '.lsp_keybindings['hoverDoc'].               ' <cmd>lua require(''vscode'').action(''editor.action.showHover'')<CR>'
 execute 'nnoremap '.lsp_keybindings['searchForFile'].          ' <cmd>lua require(''vscode'').action(''workbench.action.quickOpen'')<CR>'
 execute 'nnoremap '.lsp_keybindings['searchWorkspaceSymbols']. ' <cmd>lua require(''vscode'').action(''workbench.action.gotoSymbol'')<CR>'
+execute 'nnoremap '.lsp_keybindings['recentFiles'].            ' <cmd>lua require(''vscode'').action(''workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup'')<CR>'
 execute 'nnoremap '.lsp_keybindings['quickSwitch'].            ' <cmd>lua require(''vscode'').action(''workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup'')<CR>'
+execute 'nnoremap '.lsp_keybindings['rename'].                 ' <cmd>lua require(''vscode'').action(''editor.action.rename'')<CR>'
+
+" These didn't work how I hoped they would. Keeping around just in case I look into it more.
+" execute 'nnoremap '.lsp_keybindings['quickSwitch'].            ' <cmd>lua require(''vscode'').action(''workbench.action.quickOpenNavigateNextInEditorPicker'')<CR>'
+" execute 'nnoremap '.lsp_keybindings['quickSwitch'].            ' <cmd>lua require(''vscode'').action(''workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup'')<CR>'
+" execute 'nnoremap '.lsp_keybindings['quickSwitch'].            ' <cmd>lua require(''vscode'').action(''workbench.action.quickOpenNavigateNext'')<CR>'
+
+
 " execute 'nnoremap '.lsp_keybindings['goToPreviousWindow'].     ' <cmd>lua require(''vscode'').action(''workbench.action.previousEditor'')<CR>'
 execute 'nnoremap '.lsp_keybindings['goToPreviousWindow'].' <c-w><c-p>'
 execute 'nnoremap '.lsp_keybindings['searchDocumentSymbols'].  ' <cmd>lua require(''vscode'').action(''workbench.action.gotoSymbol'')<CR>'
@@ -42,39 +51,40 @@ lua << EOF
 
 -- Got this from: https://github.com/vscode-neovim/vscode-neovim/issues/1091#issuecomment-2228316698
 -- Uses jumplist vscode plugin: https://marketplace.visualstudio.com/items?itemName=spacian.jumplist
-if vim.g.vscode then
-  local vscode = require("vscode")
-  local previous_jumplist = vim.fn.getjumplist()[1]
-
-  local function jump_back()
-    vscode.call("jumplist.jumpBack")
-  end
-
-  local function jump_forw()
-    vscode.call("jumplist.jumpForward")
-  end
-
--- this is not nice, but does the job for now
-  local function goToDef()
-    vscode.call("jumplist.registerJump")
-    vscode.call("editor.action.revealDefinition")
-  end
-
-  vim.keymap.set({ "n" }, "<c-o>", jump_back, { noremap = true })
-  vim.keymap.set({ "n" }, "<c-i>", jump_forw, { noremap = true })
-  vim.keymap.set({ "n" }, "gd", goToDef, { noremap = true })
-
-  local function check_jumplist()
-    local current_jumplist = vim.fn.getjumplist()[1]
-    if #current_jumplist > #previous_jumplist then
-      vscode.call("jumplist.registerJump")
-    end
-    previous_jumplist = current_jumplist
-  end
-
-  vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-    callback = check_jumplist,
-  })
-end
+-- PLUGIN DOESN'T EXIST FOR CURSOR
+-- if vim.g.vscode then
+--   local vscode = require("vscode")
+--   local previous_jumplist = vim.fn.getjumplist()[1]
+-- 
+--   local function jump_back()
+--     vscode.call("jumplist.jumpBack")
+--   end
+-- 
+--   local function jump_forw()
+--     vscode.call("jumplist.jumpForward")
+--   end
+-- 
+-- -- this is not nice, but does the job for now
+--   local function goToDef()
+--     vscode.call("jumplist.registerJump")
+--     vscode.call("editor.action.revealDefinition")
+--   end
+-- 
+--   vim.keymap.set({ "n" }, "<c-o>", jump_back, { noremap = true })
+--   vim.keymap.set({ "n" }, "<c-i>", jump_forw, { noremap = true })
+--   vim.keymap.set({ "n" }, "gd", goToDef, { noremap = true })
+-- 
+--   local function check_jumplist()
+--     local current_jumplist = vim.fn.getjumplist()[1]
+--     if #current_jumplist > #previous_jumplist then
+--       vscode.call("jumplist.registerJump")
+--     end
+--     previous_jumplist = current_jumplist
+--   end
+-- 
+--   vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+--     callback = check_jumplist,
+--   })
+-- end
 
 EOF

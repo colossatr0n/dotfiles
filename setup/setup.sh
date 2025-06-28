@@ -76,7 +76,17 @@ ln -s ~/dotfiles/config/nvim ~/.config/
 ln -s ~/dotfiles/config/vim ~/.config/
 ln -s ~/dotfiles/config/p10k ~/.config/
 ln -s ~/dotfiles/config/surfingkeys ~/.config/
+ln -s ~/dotfiles/config/ideavim/ideavimrc ~/.ideavimrc
+ln -s ~/dotfiles/config/alacritty ~/.config/alacritty
+ln -s ~/dotfiles/config/vscode/vscodevimrc.vim ~/.vscodevimrc
 ```
 
 # NVim Setup
 After installing neovim and running the symlinks section above, open nvim, you'll probably see a bunch of errors, ignore them and run `:PlugInstall`
+
+
+# Oh My ZSH
+```
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+

@@ -142,3 +142,7 @@ Use `%V`.
 To paste from a register into the terminal window you have to be in Terminal-Job ("insert") mode.
 
 Press CTRL-W " followed by the register.
+
+# Ollama Logs
+less ~/.ollama/logs/server.log
+

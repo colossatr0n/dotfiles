@@ -109,7 +109,7 @@ local defaults =  {
 }
 
 -- Ensure the installed lsps are configured
-require('mason-lspconfig').setup_handlers({
+require('mason-lspconfig').setup({
   function(server_name)
     nvim_lsp[server_name].setup( 
         defaults

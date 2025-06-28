@@ -1,9 +1,6 @@
 import:
   # Theme
   -  ~/dotfiles/config/alacritty/nightfox.yml
-font:
-  normal:
-    family: "MesloLGS NF"
 
 key_bindings:
   # Groups multiple alacritty instances under a single dock icon

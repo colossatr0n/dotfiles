@@ -6,7 +6,7 @@ let lsp_keybindings = {
             \ 'reformat'               : '<leader>rf',
             \ 'goToImplementation'     : 'gI',
             \ 'signatureHelp'          : '<leader>pi',
-            \ 'goToTypeDefinition'     : 'gty',
+            \ 'goToTypeDefinition'     : 'gy',
             \ 'rename'                 : '<leader>rn',
             \ 'codeAction'             : '<leader>a',
             \ 'finder'                 : '<leader>u',
@@ -25,6 +25,7 @@ let lsp_keybindings = {
             \ 'removeWorkspaceFolder'  : '<leader>wr',
             \ 'showWorkspaceFolders'   : '<leader>wl', 
             \ 'goToPreviousWindow'     : '<leader>w', 
+            \
             \ 'searchForFile'          : '<leader>o', 
             \ 'searchDocumentSymbols'  : '<leader>sd', 
             \ 'searchWorkspaceSymbols' : '<leader>ss',
@@ -40,6 +41,7 @@ let lsp_keybindings = {
             \ 'previewChange'          : '<leader>hp',
             \
             \ 'quickSwitch'            : '<leader>f',
+            \ 'recentFiles'            : '<leader>re',
             \
             \ 'maximizeWindow'         : '<c-w>m',
 \}

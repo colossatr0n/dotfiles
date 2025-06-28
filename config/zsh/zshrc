@@ -1,7 +1,16 @@
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
+
+# Keep separate histories for each session
+export HISTFILE="$HOME/.zsh_history_$KITTY_WINDOW_ID"
+if [ ! -e $HISTFILE ]; then cp "$HOME/.zsh_history" "$HISTFILE"; fi
+
+export EDITOR=nvim
 ########################################
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=${PATH}:${HOME}/Library/Python/3.7/bin
+# export PATH=${PATH}:${HOME}/Library/Python/3.7/bin
 ########################################
 # OH MY ZSH SETUP
 source ~/dotfiles/config/zsh/oh-my-zshrc
@@ -26,6 +35,9 @@ fi
 # This must be sourced after `set -o vi`
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 ###################BEGIN USER CONFIGURATION#####################
+# PAGER
+export MANPAGER='nvim +Man!'
+########################################
 # NOTES
 
 ########################################
@@ -63,4 +75,4 @@ source ~/.zshrc.local
 
 
 # Load Angular CLI autocompletion.
-source <(ng completion script)
+# source <(ng completion script)
