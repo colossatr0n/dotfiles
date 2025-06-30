@@ -1,6 +1,9 @@
 " mapclear
 let mapleader=" "
 source ~/dotfiles/config/nvim/vimscript/lsp-keybindings.vim
+" Load plugins
+" REMEMBER TO RUN :PlugInstall in Cursor
+source ~/dotfiles/config/nvim/vim-plug/plugins.vim
 
 " Uses LSP keybindings.
 execute 'nnoremap '.lsp_keybindings['previewDefinition'].      ' <cmd>lua require(''vscode'').action(''editor.action.showDefinitionPreviewHover'')<CR>'

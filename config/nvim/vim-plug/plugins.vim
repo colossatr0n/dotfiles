@@ -13,68 +13,73 @@ autocmd VimEnter *
 
 call plug#begin('~/dotfiles/config/nvim/autoload/plugged')
 
-    " LSP support
-    Plug 'williamboman/mason.nvim'
-    Plug 'williamboman/mason-lspconfig.nvim'
-    Plug 'neovim/nvim-lspconfig'
+    " Not compatible with vscode
+    if !exists('g:vscode')
+        " LSP support
+        Plug 'williamboman/mason.nvim'
+        Plug 'williamboman/mason-lspconfig.nvim'
+        Plug 'neovim/nvim-lspconfig'
 
-    " Autocompletion
-    Plug 'hrsh7th/nvim-cmp' " Autocompletion plugin
-    Plug 'hrsh7th/cmp-buffer'  " provides suggestions based on the current file.
-    Plug 'hrsh7th/cmp-path' " gives completions based on the filesystem.
-    Plug 'hrsh7th/cmp-nvim-lua' " provides completions based on neovim's lua api.
-    Plug 'hrsh7th/cmp-nvim-lsp' " LSP source for nvim-cmp. show data send by the language server.
-    Plug 'saadparwaiz1/cmp_luasnip' " Snippets source for nvim-cmp. it shows snippets in the suggestions.
+        " Autocompletion
+        Plug 'hrsh7th/nvim-cmp' " Autocompletion plugin
+        Plug 'hrsh7th/cmp-buffer'  " provides suggestions based on the current file.
+        Plug 'hrsh7th/cmp-path' " gives completions based on the filesystem.
+        Plug 'hrsh7th/cmp-nvim-lua' " provides completions based on neovim's lua api.
+        Plug 'hrsh7th/cmp-nvim-lsp' " LSP source for nvim-cmp. show data send by the language server.
+        Plug 'saadparwaiz1/cmp_luasnip' " Snippets source for nvim-cmp. it shows snippets in the suggestions.
 
-    " Snippets
-    Plug 'L3MON4D3/LuaSnip' " Snippets plugin
-    Plug 'rafamadriz/friendly-snippets'
+        " Snippets
+        Plug 'L3MON4D3/LuaSnip' " Snippets plugin
+        Plug 'rafamadriz/friendly-snippets'
 
-      " LSP Setup
-    Plug 'VonHeikemen/lsp-zero.nvim'
-    Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
+        " LSP Setup
+        Plug 'VonHeikemen/lsp-zero.nvim'
+        Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
 
-    " FZF
-	Plug '/usr/local/opt/fzf'
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-	Plug 'junegunn/fzf.vim'
+        " FZF
+        Plug '/usr/local/opt/fzf'
+        Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+        Plug 'junegunn/fzf.vim'
 
-    " Telescope
-    Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
-    if executable('make')
-        Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-    elseif executable('cmake')
-        Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+        " Telescope
+        Plug 'nvim-lua/plenary.nvim'
+        Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
+        if executable('make')
+            Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+        elseif executable('cmake')
+            Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+        endif
+
+        Plug 'itchyny/lightline.vim'
+        Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+        
+        " GIT
+        Plug 'airblade/vim-gitgutter'
+        Plug 'tpope/vim-fugitive'
+
+        Plug 'preservim/nerdtree'
+        Plug 'akinsho/toggleterm.nvim'
+        Plug 'jremmen/vim-ripgrep'
+        Plug 'sbdchd/neoformat'
+        Plug 'machakann/vim-highlightedyank'
+        Plug 'justinmk/vim-sneak'
+        Plug 'szw/vim-maximizer'
+        Plug 'folke/neodev.nvim'
+
+        " Markdown
+        if executable('yarn') && executable('node')
+            Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' } 
+        else 
+            Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+        endif
+
+        " Themes
+        Plug 'rose-pine/neovim', {'as': 'rose-pine'}
+        Plug 'EdenEast/nightfox.nvim'
     endif
 
-    Plug 'itchyny/lightline.vim'
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    
-    " GIT
-    Plug 'airblade/vim-gitgutter'
-    Plug 'tpope/vim-fugitive'
-
-    Plug 'preservim/nerdtree'
-    Plug 'akinsho/toggleterm.nvim'
-    Plug 'jremmen/vim-ripgrep'
+    " Compatible with vscode
     Plug 'tpope/vim-commentary'
-    Plug 'sbdchd/neoformat'
-    Plug 'machakann/vim-highlightedyank'
-    Plug 'justinmk/vim-sneak'
-    Plug 'szw/vim-maximizer'
-    Plug 'folke/neodev.nvim'
-
-    " Markdown
-    if executable('yarn') && executable('node')
-        Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' } 
-    else 
-        Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-    endif
-
-    " Themes
-    Plug 'rose-pine/neovim', {'as': 'rose-pine'}
-    Plug 'EdenEast/nightfox.nvim'
 
 call plug#end()
 
