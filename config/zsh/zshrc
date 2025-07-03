@@ -57,6 +57,8 @@ alias vim='nvim'
 alias cdd='cd ~/dotfiles'
 alias cdc='cd ~/code'
 alias angularjslines='git ls-files | grep -v dist | grep ".js"  | xargs wc -l'
+# Get the list of changed Python files
+alias pydiff="git diff --cached --name-only | grep -E '\.py$'"
 
 ########################################
 # FUNCTIONS
