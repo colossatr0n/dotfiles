@@ -34,8 +34,8 @@ yabai -m config                                 \
     mouse_drop_action            swap
 
 
-# rules
-yabai -m rule --add app="^System Preferences$" manage=off
+# rules (make sure to close the application and reopen it if it was just unmanaged.)
+yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^IntelliJ IDEA$" manage=off
 yabai -m rule --add title="Preferences" manage=off
 yabai -m rule --add app="GIMP" manage=off
@@ -45,6 +45,7 @@ yabai -m rule --add app="Microsoft Remote Desktop" manage=off
 yabai -m rule --add app="Python" manage=off
 yabai -m rule --add app="Blender" manage=off
 yabai -m rule --add app="Ultimaker Cura" manage=off
+yabai -m rule --add app="Cursor|VSCode" manage=off
 
 if [[ $USER == 'workstation' ]]; then
     echo "Using work profile."
@@ -60,7 +61,10 @@ if [[ $USER == 'workstation' ]]; then
 	action='${HOME}/.config/yabai/scripts/defeat-teams'
 fi
 
+yabai -m rule --apply
 echo "yabai configuration loaded.."
+
+
 # Janky Borders
 borders \
     active_color=0xffe1e3e4 \
