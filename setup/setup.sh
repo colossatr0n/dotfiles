@@ -79,6 +79,8 @@ ln -s ~/dotfiles/config/surfingkeys ~/.config/
 ln -s ~/dotfiles/config/ideavim/ideavimrc ~/.ideavimrc
 ln -s ~/dotfiles/config/alacritty ~/.config/alacritty
 ln -s ~/dotfiles/config/vscode/vscodevimrc.vim ~/.vscodevimrc
+ln -s ~/dotfiles/config/yabai/yabairc ~/.yabairc
+ln -s ~/dotfiles/config/skhd/skhdrc ~/.skhdrc
 ```
 
 # NVim Setup
