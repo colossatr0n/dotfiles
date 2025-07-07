@@ -1,3 +1,4 @@
+export PATH="/Applications/PyCharm.app/Contents/MacOS:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init - zsh)"
@@ -67,6 +68,12 @@ ql() {
   echo $type
   plutil -insert CFBundleDocumentTypes.0.LSItemContentTypes.0 -string $type ~/Library/QuickLook/QLStephen.qlgenerator/Contents/Info.plist
   qlmanage -r
+}
+
+pytojson() {
+    while read data; do
+        python -c "import json; print(json.dumps("""$data"""))"
+    done
 }
 
 ########################################

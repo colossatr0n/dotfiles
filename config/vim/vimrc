@@ -1,5 +1,8 @@
 source ~/dotfiles/config/nvim/vimscript/lsp-keybindings.vim
 
+" Make vim shell interactive so that it loads zshrc
+set shellcmdflag=-ic
+
 let mapleader=" "
 set number
 set timeoutlen=500
